@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Visual: Sistemas Operativos de Red y Arquitecturas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 30px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            max-width: 1300px;
+            width: 100%;
+        }
+        
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+        
+        .main-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 50px rgba(0,0,0,0.4);
+        }
+        
+        .card-title {
+            font-size: 1.8rem;
+            color: #333;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .emoji-icon {
+            font-size: 2rem;
+        }
+        
+        .nos-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .nos-item {
+            background: #f8f9ff;
+            border-radius: 15px;
+            padding: 15px;
+            border-left: 5px solid;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .nos-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.2);
+        }
+        
+        .nos-item h3 {
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+        }
+        
+        .nos-item p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .windows { border-left-color: #00a4ef; }
+        .linux { border-left-color: #f9a11b; }
+        .unix { border-left-color: #6f42c1; }
+        .novell { border-left-color: #8b4513; }
+        .macos { border-left-color: #555; }
+        
+        .arch-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .arch-item {
+            background: #f8f9ff;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .arch-item:hover {
+            border-color: #667eea;
+            background: white;
+        }
+        
+        .arch-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .arch-name {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .arch-desc {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .service-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 0.9rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .comparison-table {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 25px;
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #e0e0e0;
+            color: #333;
+        }
+        
+        tr:hover td {
+            background: #f8f9ff;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .badge-centralizada { background: #28a745; }
+        .badge-descentralizada { background: #dc3545; }
+        .badge-distribuida { background: #ffc107; color: #333; }
+        
+        .footer-note {
+            text-align: center;
+            margin-top: 20px;
+            color: white;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        @media (max-width: 768px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .arch-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🖧 SISTEMAS OPERATIVOS DE RED (NOS)</h1>
+        <div class="subtitle">Análisis de Arquitecturas y Servicios | Patricia López, Francisco Ruiz - IS1 2</div>
+        
+        <div class="main-grid">
+            <!-- Tarjeta de Sistemas Operativos de Red -->
+            <div class="card">
+                <div class="card-title">
+                    <span class="emoji-icon">🖥️</span>
+                    Sistemas Operativos de Red
+                </div>
+                <div class="nos-list">
+                    <div class="nos-item windows">
+                        <h3>🪟 Windows Server</h3>
+                        <p>Active Directory, dominio, integración Microsoft. Ideal para empresas con infraestructura Windows.</p>
+                    </div>
+                    <div class="nos-item linux">
+                        <h3>🐧 Linux Server</h3>
+                        <p>Alta estabilidad, seguridad, personalizable. Ubuntu Server, Red Hat, CentOS. Dominante en cloud.</p>
+                    </div>
+                    <div class="nos-item unix">
+                        <h3>🔧 Unix</h3>
+                        <p>Multiusuario, robusto, seguridad avanzada. Usado en universidades, investigación y grandes servidores.</p>
+                    </div>
+                    <div class="nos-item novell">
+                        <h3>📀 Novell NetWare</h3>
+                        <p>Pionero en redes locales (1980-90). Excelente para archivos/impresión. Base histórica de los NOS.</p>
+                    </div>
+                    <div class="nos-item macos">
+                        <h3>🍎 macOS Server</h3>
+                        <p>Gestión de dispositivos Apple, integración con ecosistema. Ideal en educación y empresas Apple.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tarjeta de Servicios de un NOS -->
+            <div class="card">
+                <div class="card-title">
+                    <span class="emoji-icon">⚙️</span>
+                    Servicios Esenciales de Red
+                </div>
+                <div class="services-grid">
+                    <div class="service-item">👥 Administración de Usuarios y Autenticación</div>
+                    <div class="service-item">📁 Compartición de Archivos</div>
+                    <div class="service-item">🖨️ Servicios de Impresión</div>
+                    <div class="service-item">📋 Servicios de Directorio</div>
+                    <div class="service-item">💾 Administración de Recursos</div>
+                    <div class="service-item">🔒 Seguridad de Red</div>
+                    <div class="service-item">🌐 Comunicación entre Dispositivos</div>
+                    <div class="service-item">🎛️ Administración Centralizada</div>
+                </div>
+                <div style="margin-top: 20px; padding: 15px; background: #f0f0f0; border-radius: 10px;">
+                    <p style="color: #333; font-size: 0.95rem; line-height: 1.5;">
+                        <strong>💡 Definición NOS:</strong> Software diseñado para administrar, controlar y coordinar los recursos de una red, permitiendo que múltiples dispositivos se comuniquen y compartan información de forma segura y eficiente.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Tarjeta de Arquitecturas (ahora más grande) -->
+            <div class="card" style="grid-column: span 2;">
+                <div class="card-title">
+                    <span class="emoji-icon">🏗️</span>
+                    Arquitecturas de Red para NOS
+                </div>
+                <div class="arch-grid">
+                    <div class="arch-item">
+                        <div class="arch-emoji">🖥️ ↔️ 🖥️</div>
+                        <div class="arch-name">Cliente-Servidor</div>
+                        <div class="arch-desc">Servidor central gestiona recursos y clientes</div>
+                        <div style="margin-top: 8px;"><span class="badge badge-centralizada">Centralizada</span></div>
+                        <div style="margin-top: 8px; font-size: 0.75rem; color: #28a745;">Alta seguridad, control total</div>
+                    </div>
+                    <div class="arch-item">
+                        <div class="arch-emoji">🖥️ ⇄ 🖥️</div>
+                        <div class="arch-name">P2P (Peer to Peer)</div>
+                        <div class="arch-desc">Todos son clientes y servidores</div>
+                        <div style="margin-top: 8px;"><span class="badge badge-descentralizada">Descentralizada</span></div>
+                        <div style="margin-top: 8px; font-size: 0.75rem; color: #dc3545;">Bajo costo, seguridad limitada</div>
+                    </div>
+                    <div class="arch-item">
+                        <div class="arch-emoji">📱 → 💻 → 🗄️</div>
+                        <div class="arch-name">N-Capas</div>
+                        <div class="arch-desc">Presentación, lógica y datos separados</div>
+                        <div style="margin-top: 8px;"><span class="badge badge-distribuida">Lóg. Distribuida</span></div>
+                        <div style="margin-top: 8px; font-size: 0.75rem; color: #ffc107;">Escalable, modular</div>
+                    </div>
+                    <div class="arch-item">
+                        <div class="arch-emoji">☁️ → 🖥️</div>
+                        <div class="arch-name">Cloud Computing</div>
+                        <div class="arch-desc">Servicios bajo demanda por internet</div>
+                        <div style="margin-top: 8px;"><span class="badge badge-centralizada">Centralizada (proveedor)</span></div>
+                        <div style="margin-top: 8px; font-size: 0.75rem; color: #28a745;">Elástico, acceso global</div>
+                    </div>
+                    <div class="arch-item">
+                        <div class="arch-emoji">📡 → ⚡ → ☁️</div>
+                        <div class="arch-name">Edge Computing</div>
+                        <div class="arch-desc">Procesamiento cerca de la fuente (IoT)</div>
+                        <div style="margin-top: 8px;"><span class="badge badge-descentralizada">Descentralizada</span></div>
+                        <div style="margin-top: 8px; font-size: 0.75rem; color: #17a2b8;">Baja latencia, tiempo real</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tabla Comparativa Completa -->
+        <div class="comparison-table">
+            <h2 style="color: #333; margin-bottom: 20px;">📊 Análisis Comparativo de Arquitecturas para NOS</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Característica</th>
+                        <th>Cliente-Servidor</th>
+                        <th>P2P</th>
+                        <th>N-Capas</th>
+                        <th>Cloud Computing</th>
+                        <th>Edge Computing</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Gráfico</strong></td>
+                        <td>🖥️(Server) ↔️ 🖥️🖥️</td>
+                        <td>🖥️ ⇄ 🖥️ ⇄ 🖥️</td>
+                        <td>📱 → 💻 → 🗄️</td>
+                        <td>🖥️ → ☁️ → 🖥️</td>
+                        <td>📡 → ⚡ → ☁️</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Definición</strong></td>
+                        <td>Servidor central gestiona servicios para clientes</td>
+                        <td>Todos los nodos son clientes y servidores</td>
+                        <td>Funcionalidad dividida en capas independientes</td>
+                        <td>Servicios bajo demanda por internet</td>
+                        <td>Procesamiento cerca de la fuente de datos</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Funcionamiento</strong></td>
+                        <td>Cliente solicita → Servidor responde</td>
+                        <td>Recursos compartidos directamente entre pares</td>
+                        <td>Capa presentación → negocio → datos</td>
+                        <td>Recursos virtualizados en infraestructura cloud</td>
+                        <td>Datos procesados localmente, resumen a la nube</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Componentes</strong></td>
+                        <td>Servidor NOS, clientes, switches</td>
+                        <td>PCs con SO de escritorio</td>
+                        <td>Cliente web, servidores app/BD, middleware</td>
+                        <td>Infraestructura proveedor, internet, clientes</td>
+                        <td>Sensores, gateways, nodos edge</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Servicios NOS</strong></td>
+                        <td>Active Directory, archivos, impresión</td>
+                        <td>Carpetas compartidas, red simple</td>
+                        <td>Autenticación web, lógica, BD</td>
+                        <td>Todo como servicio (IaaS, PaaS, SaaS)</td>
+                        <td>Tiempo real, baja latencia</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ventajas</strong></td>
+                        <td>Control centralizado, alta seguridad</td>
+                        <td>Bajo costo, fácil configuración</td>
+                        <td>Escalabilidad, desarrollo ágil</td>
+                        <td>Acceso global, sin mantenimiento físico</td>
+                        <td>Velocidad, ahorro ancho de banda</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Desventajas</strong></td>
+                        <td>Punto único de fallo</td>
+                        <td>Seguridad compleja, rendimiento variable</td>
+                        <td>Complejidad de diseño</td>
+                        <td>Dependencia de internet</td>
+                        <td>Gestión compleja de dispositivos</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Control de Red</strong></td>
+                        <td><span class="badge badge-centralizada">Centralizada</span></td>
+                        <td><span class="badge badge-descentralizada">Descentralizada</span></td>
+                        <td><span class="badge badge-distribuida">Centralizada/Distribuida</span></td>
+                        <td><span class="badge badge-centralizada">Centralizada (proveedor)</span></td>
+                        <td><span class="badge badge-descentralizada">Descentralizada</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Seguridad</strong></td>
+                        <td>Alta (control admin)</td>
+                        <td>Baja/Media</td>
+                        <td>Alta (seguridad por capas)</td>
+                        <td>Media/Alta (depende proveedor)</td>
+                        <td>Media (datos locales, dispositivos vulnerables)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Escalabilidad</strong></td>
+                        <td>Limitada (vertical)</td>
+                        <td>Baja</td>
+                        <td>Alta (horizontal)</td>
+                        <td>Muy Alta (elástica)</td>
+                        <td>Alta (nodos distribuidos)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Uso</strong></td>
+                        <td>Empresas, universidades</td>
+                        <td>Redes domésticas, oficinas pequeñas</td>
+                        <td>Bancos, e-commerce</td>
+                        <td>Startups, teletrabajo, apps web</td>
+                        <td>Ciudades inteligentes, industria 4.0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="footer-note">
+            🎓 Taller de Análisis Comparativo - Sistemas Operativos | Basado en presentación S007 SO de Red.pptx
+        </div>
+    </div>
+</body>
+</html>

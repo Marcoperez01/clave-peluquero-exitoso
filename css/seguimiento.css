@@ -1,0 +1,823 @@
+/* ==========================================================================
+   SEGUIMIENTO.CSS - Estilos del Sistema de Geocercas y Seguimiento
+   Clave del Peluquero Exitoso
+   Fecha: 2026-04-06
+   Descripción: Estilos premium oscuros para el mapa Leaflet, panel de
+                control, dashboard de benchmark, y tabla de paquetes.
+                Consistente con modern.css del proyecto principal.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. HERO DE SEGUIMIENTO - Sección principal con gradiente oscuro
+   -------------------------------------------------------------------------- */
+.seguimiento-hero {
+    background: linear-gradient(135deg, #0a0a0f 0%, #12121a 40%, #1a1a2e 100%);
+    position: relative;
+    padding: 60px 0 30px 0;
+    overflow: hidden;
+}
+
+.seguimiento-hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background:
+        radial-gradient(circle at 20% 50%, rgba(212, 168, 83, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(111, 66, 193, 0.06) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.seguimiento-hero h1 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2rem, 4vw, 3rem);
+    background: linear-gradient(135deg, #d4a853 0%, #e8c97a 50%, #fff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.seguimiento-hero .subtitle {
+    color: #8a8a9a;
+    font-size: 1rem;
+    max-width: 600px;
+}
+
+/* -- Badge de estado con pulso -- */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: 'Inter', monospace;
+    background: rgba(212, 168, 83, 0.1);
+    border: 1px solid rgba(212, 168, 83, 0.2);
+    color: #d4a853;
+}
+
+.status-badge .pulse {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #d4a853;
+    animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(212, 168, 83, 0.4); }
+    50% { box-shadow: 0 0 0 6px rgba(212, 168, 83, 0); }
+}
+
+/* --------------------------------------------------------------------------
+   2. SECCIÓN DE RASTREO - Input de código de paquete
+   -------------------------------------------------------------------------- */
+.tracking-section {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.tracking-input-group {
+    display: flex;
+    gap: 12px;
+    max-width: 600px;
+}
+
+.tracking-input-group input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 14px 20px;
+    color: #fff;
+    font-family: 'Inter', monospace;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.tracking-input-group input:focus {
+    border-color: rgba(212, 168, 83, 0.5);
+    box-shadow: 0 0 0 3px rgba(212, 168, 83, 0.1);
+}
+
+.tracking-input-group input::placeholder {
+    color: #6b6b80;
+}
+
+.tracking-input-group button {
+    padding: 14px 28px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #d4a853, #b08930);
+    color: #0a0a0f;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.tracking-input-group button:hover {
+    background: linear-gradient(135deg, #e8c97a, #d4a853);
+    box-shadow: 0 4px 20px rgba(212, 168, 83, 0.3);
+    transform: translateY(-2px);
+}
+
+/* -- Resultado del rastreo -- */
+.tracking-result {
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(212, 168, 83, 0.05);
+    border: 1px solid rgba(212, 168, 83, 0.15);
+    border-radius: 12px;
+    display: none;
+}
+
+.tracking-result.active {
+    display: block;
+    animation: fadeInUp 0.4s ease;
+}
+
+.tracking-result .result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-top: 15px;
+}
+
+.tracking-result .result-item {
+    text-align: center;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+}
+
+.tracking-result .result-item .label {
+    font-size: 11px;
+    color: #8a8a9a;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+.tracking-result .result-item .value {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+}
+
+/* -- Barra de progreso premium -- */
+.progress-track {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 3px;
+    margin-top: 15px;
+    overflow: hidden;
+}
+
+.progress-track .progress-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #d4a853, #6f42c1);
+    transition: width 1s ease;
+}
+
+/* -- Pasos del envío -- */
+.shipping-steps {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    position: relative;
+}
+
+.shipping-steps::before {
+    content: '';
+    position: absolute;
+    top: 16px; left: 20px; right: 20px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.shipping-step {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    flex: 1;
+}
+
+.shipping-step .step-dot {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 8px auto;
+    font-size: 14px;
+    color: #6b6b80;
+    transition: all 0.3s ease;
+}
+
+.shipping-step.completed .step-dot {
+    background: linear-gradient(135deg, #d4a853, #b08930);
+    border-color: #d4a853;
+    color: #0a0a0f;
+}
+
+.shipping-step.active .step-dot {
+    background: rgba(111, 66, 193, 0.2);
+    border-color: #6f42c1;
+    color: #6f42c1;
+    animation: pulseGlow 2s ease-in-out infinite;
+}
+
+.shipping-step .step-label {
+    font-size: 11px;
+    color: #6b6b80;
+    font-weight: 500;
+}
+
+.shipping-step.completed .step-label,
+.shipping-step.active .step-label {
+    color: #c0c0d0;
+}
+
+/* --------------------------------------------------------------------------
+   3. MAPA LEAFLET - Contenedor con tema oscuro
+   -------------------------------------------------------------------------- */
+.map-container {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: #0a0a0f;
+}
+
+.map-container #mapSeguimiento {
+    height: 500px;
+    width: 100%;
+    background: #0d1117;
+}
+
+.map-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.map-header h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.map-header .map-stats {
+    display: flex;
+    gap: 20px;
+    font-size: 12px;
+    font-family: 'Inter', monospace;
+}
+
+.map-header .map-stat {
+    color: #8a8a9a;
+}
+
+.map-header .map-stat span {
+    color: #d4a853;
+    font-weight: 700;
+}
+
+/* -- Sobreescribir estilos de Leaflet para tema oscuro -- */
+.leaflet-popup-content-wrapper {
+    background: rgba(10, 10, 15, 0.95) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    color: #fff !important;
+    backdrop-filter: blur(20px);
+}
+
+.leaflet-popup-tip {
+    background: rgba(10, 10, 15, 0.95) !important;
+}
+
+.leaflet-popup-content {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 13px !important;
+    color: #c0c0d0 !important;
+}
+
+.leaflet-popup-content strong {
+    color: #d4a853 !important;
+}
+
+.leaflet-control-zoom a {
+    background: rgba(10, 10, 15, 0.9) !important;
+    color: #d4a853 !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.leaflet-control-attribution {
+    background: rgba(10, 10, 15, 0.8) !important;
+    color: #6b6b80 !important;
+    font-size: 10px !important;
+}
+
+.leaflet-control-attribution a {
+    color: #8a8a9a !important;
+}
+
+/* --------------------------------------------------------------------------
+   4. PANEL DE CONTROL - Sliders y botones con glassmorphism
+   -------------------------------------------------------------------------- */
+.control-panel {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 24px;
+}
+
+.control-panel h3 {
+    font-family: 'Inter', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #8a8a9a;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.control-panel h3 i {
+    color: #d4a853;
+}
+
+/* -- Grupo de control individual -- */
+.control-group {
+    margin-bottom: 20px;
+}
+
+.control-group label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 600;
+    color: #c0c0d0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.control-group label .value {
+    color: #d4a853;
+    font-family: 'Inter', monospace;
+}
+
+/* -- Slider personalizado -- */
+.control-group input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+}
+
+.control-group input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #d4a853, #b08930);
+    border: 2px solid #0a0a0f;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(212, 168, 83, 0.3);
+}
+
+.control-group input[type="range"]::-moz-range-thumb {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #d4a853, #b08930);
+    border: 2px solid #0a0a0f;
+    cursor: pointer;
+}
+
+/* -- Botones de cantidad (50, 100, 250, 500) -- */
+.qty-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.qty-btn {
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.03);
+    color: #c0c0d0;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.qty-btn:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(212, 168, 83, 0.3);
+}
+
+.qty-btn.active {
+    background: linear-gradient(135deg, rgba(212, 168, 83, 0.15), rgba(212, 168, 83, 0.05));
+    border-color: #d4a853;
+    color: #d4a853;
+}
+
+/* -- Botón de generar pedidos -- */
+.btn-generar {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #c0c0d0;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.btn-generar:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(212, 168, 83, 0.3);
+    color: #d4a853;
+}
+
+/* -- Botones de ejecutar algoritmo -- */
+.btn-algoritmo {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.btn-algoritmo:hover {
+    transform: translateY(-2px);
+}
+
+.btn-algoritmo:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-algoritmo.btn-python {
+    background: linear-gradient(135deg, #3776AB, #FFD43B);
+    color: #0a0a0f;
+}
+
+.btn-algoritmo.btn-wasm {
+    background: linear-gradient(135deg, #00599C, #17a2b8);
+    color: #fff;
+}
+
+.btn-algoritmo.btn-js {
+    background: linear-gradient(135deg, #F7DF1E, #f0c000);
+    color: #0a0a0f;
+}
+
+.btn-algoritmo.btn-all {
+    background: linear-gradient(135deg, #d4a853, #6f42c1);
+    color: #fff;
+}
+
+/* -- Separador de secciones -- */
+.control-separator {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #6b6b80;
+}
+
+.control-separator::before,
+.control-separator::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* --------------------------------------------------------------------------
+   5. DASHBOARD DE BENCHMARK - Tabla comparativa de rendimiento
+   -------------------------------------------------------------------------- */
+.benchmark-dashboard {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 24px;
+    margin-top: 20px;
+}
+
+.benchmark-dashboard h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.benchmark-dashboard h3 i {
+    color: #d4a853;
+}
+
+/* -- Cards de resultado por lenguaje -- */
+.benchmark-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.bench-card {
+    padding: 20px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.bench-card:hover {
+    border-color: rgba(212, 168, 83, 0.2);
+    transform: translateY(-2px);
+}
+
+.bench-card .lang-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #c0c0d0;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.bench-card .lang-icon {
+    width: 24px; height: 24px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.bench-card .metric {
+    margin-bottom: 8px;
+}
+
+.bench-card .metric .metric-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #6b6b80;
+}
+
+.bench-card .metric .metric-value {
+    font-size: 22px;
+    font-weight: 800;
+    font-family: 'Inter', monospace;
+    color: #d4a853;
+}
+
+.bench-card .metric .metric-unit {
+    font-size: 11px;
+    color: #8a8a9a;
+    margin-left: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   6. TABLA DE PAQUETES - Lista de pedidos con estados
+   -------------------------------------------------------------------------- */
+.paquetes-table-container {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.paquetes-table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.paquetes-table-header h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.paquetes-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.paquetes-table thead th {
+    padding: 12px 16px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #6b6b80;
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    text-align: left;
+    font-weight: 600;
+}
+
+.paquetes-table tbody td {
+    padding: 14px 16px;
+    font-size: 13px;
+    color: #c0c0d0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.paquetes-table tbody tr:hover {
+    background: rgba(212, 168, 83, 0.03);
+}
+
+.paquetes-table .codigo {
+    font-family: 'Inter', monospace;
+    font-weight: 600;
+    color: #d4a853;
+}
+
+/* -- Badges de estado -- */
+.estado-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.estado-badge.procesando {
+    background: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+    border: 1px solid rgba(255, 193, 7, 0.2);
+}
+
+.estado-badge.preparado {
+    background: rgba(23, 162, 184, 0.1);
+    color: #17a2b8;
+    border: 1px solid rgba(23, 162, 184, 0.2);
+}
+
+.estado-badge.en_transito {
+    background: rgba(111, 66, 193, 0.1);
+    color: #a78bfa;
+    border: 1px solid rgba(111, 66, 193, 0.2);
+}
+
+.estado-badge.en_geocerca {
+    background: rgba(212, 168, 83, 0.1);
+    color: #d4a853;
+    border: 1px solid rgba(212, 168, 83, 0.2);
+}
+
+.estado-badge.entregado {
+    background: rgba(40, 167, 69, 0.1);
+    color: #28a745;
+    border: 1px solid rgba(40, 167, 69, 0.2);
+}
+
+.estado-badge.devuelto {
+    background: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+    border: 1px solid rgba(220, 53, 69, 0.2);
+}
+
+/* --------------------------------------------------------------------------
+   7. ANIMACIONES GLOBALES
+   -------------------------------------------------------------------------- */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.6s ease;
+}
+
+.animate-fade-up {
+    animation: fadeInUp 0.6s ease;
+}
+
+/* -- Spinner de carga para algoritmos -- */
+.algo-spinner {
+    display: inline-block;
+    width: 16px; height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-top-color: currentColor;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* --------------------------------------------------------------------------
+   8. RESPONSIVE - Adaptaciones móvil
+   -------------------------------------------------------------------------- */
+@media (max-width: 991px) {
+    .map-container #mapSeguimiento {
+        height: 350px;
+    }
+    .tracking-input-group {
+        flex-direction: column;
+    }
+    .shipping-steps {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 767px) {
+    .map-container #mapSeguimiento {
+        height: 300px;
+    }
+    .benchmark-cards {
+        grid-template-columns: 1fr;
+    }
+    .paquetes-table {
+        font-size: 12px;
+    }
+    .paquetes-table thead th,
+    .paquetes-table tbody td {
+        padding: 10px 8px;
+    }
+}
+
+/* ==========================================================================
+   FIN DEL ARCHIVO SEGUIMIENTO.CSS
+   ========================================================================== */

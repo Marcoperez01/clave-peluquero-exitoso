@@ -1,0 +1,41 @@
+# =========================
+# Archivos de sistema
+# =========================
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.bak
+*.tmp
+*~
+
+# =========================
+# Archivos comprimidos (plantilla original)
+# =========================
+Sparlex.zip
+
+# =========================
+# Carpetas vacías / innecesarias
+# =========================
+spa-website-template/
+
+# =========================
+# IDE / Editor
+# =========================
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# =========================
+# Dependencias
+# =========================
+node_modules/
+vendor/
+composer.lock
+
+# =========================
+# Logs
+# =========================
+*.log
+npm-debug.log*

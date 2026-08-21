@@ -1,0 +1,471 @@
+/* ==========================================================================
+   INGRESAR.CSS - Rediseño Premium del Login/Registro
+   Clave del Peluquero Exitoso
+   Fecha: 2026-03-24
+   Descripción: Página de login/registro con glassmorphism oscuro,
+                gradientes dorados, inputs modernos y animaciones premium.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. FUENTES Y RESET - Poppins + Inter para consistencia con diseño global
+   -------------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+/* --------------------------------------------------------------------------
+   2. BODY - Fondo oscuro premium con efecto sutil
+   -------------------------------------------------------------------------- */
+body {
+    /* -- Fondo oscuro base con gradiente sutil -- */
+    background: linear-gradient(135deg, #0a0a0f 0%, #12121a 40%, #1a1a2e 100%);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: hidden;
+    /* -- Efecto de partículas simulado con gradiente radial -- */
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* -- Resplandor dorado decorativo en la esquina -- */
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(212, 168, 83, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(111, 66, 193, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* --------------------------------------------------------------------------
+   3. WRAPPER - Contenedor centrado con overlay oscuro
+   -------------------------------------------------------------------------- */
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: transparent;
+    position: relative;
+    z-index: 1;
+}
+
+/* --------------------------------------------------------------------------
+   4. NAVEGACIÓN - Barra superior con glassmorphism
+   -------------------------------------------------------------------------- */
+.nav {
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+    /* -- Glassmorphism para la barra de navegación -- */
+    background: rgba(10, 10, 15, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    z-index: 100;
+}
+
+.nav-menu {
+    z-index: 100;
+}
+
+.nav-menu ul {
+    display: flex;
+}
+
+.nav-menu ul li {
+    list-style-type: none;
+}
+
+.nav-menu ul li .link {
+    text-decoration: none;
+    font-weight: 500;
+    color: #c0c0d0;
+    padding-bottom: 15px;
+    margin: 0 25px;
+    transition: color 0.3s ease;
+}
+
+.link:hover, .active {
+    /* -- Borde inferior dorado al hover -- */
+    border-bottom: 2px solid #d4a853;
+    color: #d4a853;
+}
+
+/* --------------------------------------------------------------------------
+   5. BOTONES DE NAVEGACIÓN - Ingresa/Regístrate
+   -------------------------------------------------------------------------- */
+.nav-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.nav-button .btn {
+    width: 140px;
+    height: 42px;
+    font-weight: 600;
+    font-size: 14px;
+    /* -- Fondo glassmorphism para botones -- */
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #c0c0d0;
+}
+
+.btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(212, 168, 83, 0.3);
+    color: #d4a853;
+}
+
+#registerBtn {
+    margin-left: 15px;
+}
+
+/* -- Botón activo con acento dorado -- */
+.btn.white-btn {
+    /* -- Gradiente dorado para el botón seleccionado -- */
+    background: linear-gradient(135deg, #d4a853 0%, #b08930 100%);
+    color: #0a0a0f;
+    border: none;
+    font-weight: 700;
+}
+
+.btn.btn.white-btn:hover {
+    background: linear-gradient(135deg, #e8c97a 0%, #d4a853 100%);
+    box-shadow: 0 4px 15px rgba(212, 168, 83, 0.3);
+}
+
+.nav-menu-btn {
+    display: none;
+}
+
+/* --------------------------------------------------------------------------
+   6. FORM BOX - Contenedor de formularios con posición relativa
+   -------------------------------------------------------------------------- */
+.form-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 520px;
+    height: 620px;
+    overflow: hidden;
+    z-index: 2;
+}
+
+/* --------------------------------------------------------------------------
+   7. LOGIN CONTAINER - Formulario de ingreso con glassmorphism
+   -------------------------------------------------------------------------- */
+.login-container {
+    position: absolute;
+    left: 4px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    transition: 0.5s ease-in-out;
+    /* -- Glassmorphism oscuro para el contenedor -- */
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 30px;
+}
+
+/* --------------------------------------------------------------------------
+   8. REGISTER CONTAINER - Formulario de registro con glassmorphism
+   -------------------------------------------------------------------------- */
+.register-container {
+    position: absolute;
+    right: -520px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    transition: 0.5s ease-in-out;
+    /* -- Glassmorphism oscuro para el contenedor -- */
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 30px;
+}
+
+/* --------------------------------------------------------------------------
+   9. TEXTOS Y ENCABEZADOS - Estilo premium con dorado
+   -------------------------------------------------------------------------- */
+.top span {
+    color: #8a8a9a;
+    font-size: small;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.top span a {
+    font-weight: 600;
+    /* -- Link dorado para "Regístrate" -- */
+    color: #d4a853;
+    margin-left: 5px;
+    transition: color 0.2s ease;
+}
+
+.top span a:hover {
+    color: #e8c97a;
+}
+
+/* -- Header con fuente Outfit y gradiente dorado -- */
+header {
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    padding: 10px 0 25px 0;
+    /* -- Texto con gradiente dorado -- */
+    background: linear-gradient(135deg, #d4a853 0%, #e8c97a 50%, #fff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* --------------------------------------------------------------------------
+   10. INPUTS - Campos de entrada con estilo glassmorphism y borde dorado
+   -------------------------------------------------------------------------- */
+.two-forms {
+    display: flex;
+    gap: 10px;
+}
+
+.input-field {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    /* -- Fondo glassmorphism para inputs -- */
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    height: 50px;
+    width: 100%;
+    padding: 0 10px 0 45px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+/* -- Efecto al hover y focus con borde dorado -- */
+.input-field:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.input-field:focus {
+    background: rgba(255, 255, 255, 0.08);
+    /* -- Borde dorado al enfocar el input -- */
+    border-color: rgba(212, 168, 83, 0.5);
+    box-shadow: 0 0 0 2px rgba(212, 168, 83, 0.1);
+}
+
+/* -- Placeholder con color sutil -- */
+::-webkit-input-placeholder {
+    color: #6b6b80;
+}
+
+/* -- Iconos dentro de los inputs -- */
+.input-box i {
+    position: relative;
+    top: -35px;
+    left: 17px;
+    /* -- Iconos dorados -- */
+    color: #d4a853;
+    font-size: 16px;
+}
+
+/* --------------------------------------------------------------------------
+   11. BOTONES DE SUBMIT/BACK - Gradiente dorado premium
+   -------------------------------------------------------------------------- */
+.submit {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    height: 48px;
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    /* -- Gradiente dorado premium para el botón de enviar -- */
+    background: linear-gradient(135deg, #d4a853 0%, #b08930 100%);
+    color: #0a0a0f;
+    letter-spacing: 0.5px;
+}
+
+.submit:hover {
+    background: linear-gradient(135deg, #e8c97a 0%, #d4a853 100%);
+    box-shadow: 0 4px 20px rgba(212, 168, 83, 0.3);
+    transform: translateY(-2px);
+}
+
+/* -- Botón de volver con estilo glassmorphism -- */
+.back {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    height: 42px;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    /* -- Fondo transparente con borde -- */
+    background: rgba(255, 255, 255, 0.05);
+    color: #c0c0d0;
+    margin-top: 10px;
+}
+
+.back:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(212, 168, 83, 0.3);
+    color: #d4a853;
+    transform: translateY(-1px);
+}
+
+/* --------------------------------------------------------------------------
+   12. TWO COLUMNS - Recuérdame y links inferiores
+   -------------------------------------------------------------------------- */
+.two-col {
+    display: flex;
+    justify-content: space-between;
+    color: #6b6b80;
+    font-size: small;
+    margin-top: 15px;
+}
+
+.two-col .one {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+/* -- Checkbox personalizado con dorado -- */
+.two-col .one input[type="checkbox"] {
+    accent-color: #d4a853;
+}
+
+.two-col .one label {
+    color: #8a8a9a;
+}
+
+.two label a {
+    text-decoration: none;
+    /* -- Links dorados -- */
+    color: #d4a853;
+    transition: color 0.2s ease;
+}
+
+.two label a:hover {
+    color: #e8c97a;
+    text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   13. RESPONSIVE - Adaptaciones para tablets y móviles
+   -------------------------------------------------------------------------- */
+@media only screen and (max-width: 786px) {
+    .nav-button {
+        display: none;
+    }
+
+    .nav-menu.responsive {
+        top: 80px;
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: -800px;
+        display: flex;
+        justify-content: center;
+        /* -- Glassmorphism para menú móvil -- */
+        background: rgba(10, 10, 15, 0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        width: 100%;
+        height: 90vh;
+        transition: .3s;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav-menu-btn {
+        display: block;
+    }
+
+    .nav-menu-btn i {
+        font-size: 25px;
+        color: #d4a853;
+        padding: 10px;
+        /* -- Botón hamburguesa con glassmorphism -- */
+        background: rgba(212, 168, 83, 0.1);
+        border: 1px solid rgba(212, 168, 83, 0.2);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: .3s;
+    }
+
+    .nav-menu-btn i:hover {
+        background: rgba(212, 168, 83, 0.2);
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .wrapper {
+        min-height: 100vh;
+    }
+
+    .form-box {
+        width: 100%;
+        height: auto;
+        padding: 10px;
+    }
+
+    .register-container, .login-container {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .register-container .two-forms {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    header {
+        font-size: 26px;
+    }
+}
+
+/* ==========================================================================
+   FIN DEL ARCHIVO INGRESAR.CSS
+   ========================================================================== */

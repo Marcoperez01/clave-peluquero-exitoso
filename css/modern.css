@@ -1,0 +1,1765 @@
+/* ==========================================================================
+   MODERN.CSS - Rediseño Premium UI/UX
+   Clave del Peluquero Exitoso
+   Autor: Marco (Rediseño completo con estética oscura de lujo)
+   Fecha: 2026-03-24
+   Descripción: Sistema de diseño premium con glassmorphism, gradientes
+                dorados, animaciones suaves y dark mode profesional.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. GOOGLE FONTS - Tipografía moderna premium
+   -------------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* --------------------------------------------------------------------------
+   2. VARIABLES CSS - Sistema de tokens de diseño
+   -------------------------------------------------------------------------- */
+:root {
+    /* -- Colores de fondo oscuros premium -- */
+    --bg-primary: #0a0a0f;
+    --bg-secondary: #12121a;
+    --bg-tertiary: #1a1a2e;
+    --bg-card: #16161f;
+
+    /* -- Colores de acento -- */
+    --accent-gold: #d4a853;
+    --accent-gold-light: #e8c97a;
+    --accent-gold-dark: #b08930;
+    --accent-purple: #6f42c1;
+    --accent-purple-light: #8b5cf6;
+    --accent-pink: #ff6b9d;
+    --accent-cyan: #06d6a0;
+
+    /* -- Texto -- */
+    --text-primary: #ffffff;
+    --text-secondary: #c0c0d0;
+    --text-muted: #6b6b80;
+    --text-gold: #d4a853;
+
+    /* -- Glassmorphism -- */
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+
+    /* -- Gradientes -- */
+    --gradient-gold: linear-gradient(135deg, #d4a853 0%, #e8c97a 50%, #b08930 100%);
+    --gradient-purple: linear-gradient(135deg, #6f42c1 0%, #8b5cf6 100%);
+    --gradient-hero: linear-gradient(135deg, rgba(10,10,15,0.95) 0%, rgba(18,18,26,0.9) 50%, rgba(26,26,46,0.85) 100%);
+    --gradient-card: linear-gradient(145deg, rgba(22,22,31,0.8) 0%, rgba(10,10,15,0.9) 100%);
+    --gradient-glow: radial-gradient(circle at 50% 50%, rgba(212,168,83,0.15) 0%, transparent 70%);
+
+    /* -- Bordes redondeados modernos -- */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-full: 9999px;
+
+    /* -- Transiciones -- */
+    --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* -- Sombras premium -- */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+    --shadow-gold: 0 4px 20px rgba(212, 168, 83, 0.2);
+    --shadow-purple: 0 4px 20px rgba(111, 66, 193, 0.2);
+}
+
+/* --------------------------------------------------------------------------
+   3. RESET Y BASE - Estilos globales del cuerpo
+   -------------------------------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-secondary);
+    overflow-x: hidden;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* -- Encabezados con fuente Outfit -- */
+h1, h2, h3, h4, h5, h6,
+.display-1, .display-2, .display-3, .display-4, .display-5 {
+    font-family: 'Outfit', sans-serif;
+    color: var(--text-primary);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+/* -- Links sin decoración por defecto -- */
+a {
+    text-decoration: none;
+    color: var(--accent-gold);
+    transition: var(--transition-fast);
+}
+
+a:hover {
+    color: var(--accent-gold-light);
+}
+
+/* -- Selección de texto personalizada -- */
+::selection {
+    background: rgba(212, 168, 83, 0.3);
+    color: var(--text-primary);
+}
+
+/* -- Scrollbar moderna -- */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-gold-dark);
+    border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-gold);
+}
+
+/* --------------------------------------------------------------------------
+   4. ANIMATIONS - Keyframes para micro-animaciones
+   -------------------------------------------------------------------------- */
+
+/* -- Aparición con desplazamiento vertical -- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* -- Efecto de brillo dorado que recorre el elemento -- */
+@keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+
+/* -- Efecto de resplandor pulsante dorado -- */
+@keyframes goldGlow {
+    0%, 100% { box-shadow: 0 0 20px rgba(212, 168, 83, 0.1); }
+    50% { box-shadow: 0 0 40px rgba(212, 168, 83, 0.3); }
+}
+
+/* -- Flotación suave para elementos 3D -- */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+}
+
+/* -- Pulso para el botón del chatbot -- */
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 168, 83, 0.4); }
+    70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(212, 168, 83, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 168, 83, 0); }
+}
+
+/* -- Deslizamiento desde la izquierda -- */
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* -- Deslizamiento desde la derecha -- */
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* -- Rotación del gradiente en bordes -- */
+@keyframes borderRotate {
+    0% { --angle: 0deg; }
+    100% { --angle: 360deg; }
+}
+
+/* -- Clase animable con Intersection Observer -- */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   5. UTILIDADES GLASSMORPHISM - Clases reutilizables de cristal
+   -------------------------------------------------------------------------- */
+
+/* -- Efecto de cristal estándar -- */
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+}
+
+/* -- Card de cristal con hover -- */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    transition: var(--transition-normal);
+}
+
+.glass-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(212, 168, 83, 0.3);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-gold);
+}
+
+/* -- Texto con gradiente dorado -- */
+.text-gradient-gold {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* -- Línea decorativa dorada -- */
+.gold-line {
+    display: inline-block;
+    width: 60px;
+    height: 3px;
+    background: var(--gradient-gold);
+    border-radius: var(--radius-full);
+    margin-bottom: 15px;
+}
+
+/* --------------------------------------------------------------------------
+   6. SPINNER - Pantalla de carga modernizada
+   -------------------------------------------------------------------------- */
+#spinner {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .8s ease-out, visibility 0s linear .5s;
+    z-index: 99999;
+    /* -- Fondo oscuro para el spinner -- */
+    background: var(--bg-primary) !important;
+}
+
+#spinner.show {
+    transition: opacity .8s ease-out, visibility 0s linear .0s;
+    visibility: visible;
+    opacity: 1;
+}
+
+/* -- Spinner personalizado con color dorado -- */
+#spinner .spinner-grow {
+    background-color: var(--accent-gold) !important;
+    width: 3rem;
+    height: 3rem;
+}
+
+/* --------------------------------------------------------------------------
+   7. BACK TO TOP - Botón de regreso al inicio
+   -------------------------------------------------------------------------- */
+.back-to-top {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    display: flex;
+    width: 50px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-normal);
+    z-index: 99;
+    /* -- Estilo gradiente dorado -- */
+    background: var(--gradient-gold) !important;
+    border: none !important;
+    color: var(--bg-primary) !important;
+    border-radius: var(--radius-md) !important;
+    box-shadow: var(--shadow-gold);
+}
+
+.back-to-top:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(212, 168, 83, 0.4);
+}
+
+/* --------------------------------------------------------------------------
+   8. BOTONES - Sistema de botones premium
+   -------------------------------------------------------------------------- */
+.btn {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    transition: var(--transition-normal);
+    border-radius: var(--radius-full);
+    letter-spacing: 0.02em;
+}
+
+/* -- Botón primario con gradient dorado -- */
+.btn-primary {
+    background: var(--gradient-gold) !important;
+    border: none !important;
+    color: var(--bg-primary) !important;
+    font-weight: 700;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 168, 83, 0.4) !important;
+    color: var(--bg-primary) !important;
+}
+
+.btn-primary-outline-0 {
+    border: none;
+    color: var(--bg-primary) !important;
+}
+
+.btn-primary-outline-0:hover {
+    background: var(--accent-gold-light) !important;
+    color: var(--bg-primary) !important;
+    box-shadow: 0 6px 20px rgba(212, 168, 83, 0.4) !important;
+}
+
+/* -- Botón outline premium -- */
+.btn-outline-primary {
+    background: transparent !important;
+    border: 2px solid var(--accent-gold) !important;
+    color: var(--accent-gold) !important;
+}
+
+.btn-outline-primary:hover {
+    background: var(--accent-gold) !important;
+    color: var(--bg-primary) !important;
+    box-shadow: var(--shadow-gold);
+}
+
+/* -- Botón light transparente -- */
+.btn-light {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: var(--text-primary) !important;
+}
+
+.btn-light:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    color: var(--text-primary) !important;
+}
+
+.btn-light-outline-0 {
+    border: none;
+    color: var(--accent-gold) !important;
+}
+
+.btn-light-outline-0:hover {
+    background: var(--accent-gold) !important;
+    color: var(--bg-primary) !important;
+}
+
+/* -- Tamaños de botones cuadrados -- */
+.btn-square { width: 32px; height: 32px; }
+.btn-sm-square { width: 36px; height: 36px; }
+.btn-md-square { width: 48px; height: 48px; }
+.btn-lg-square { width: 56px; height: 56px; }
+
+.btn-square,
+.btn-sm-square,
+.btn-md-square,
+.btn-lg-square {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
+}
+
+/* --------------------------------------------------------------------------
+   9. TOPBAR - Barra superior con información de contacto
+   -------------------------------------------------------------------------- */
+.container-fluid.bg-primary.text-white {
+    /* -- Fondo oscuro semitrasnparente en vez de púrpura -- */
+    background: var(--bg-secondary) !important;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.container-fluid.bg-primary.text-white a.text-white {
+    color: var(--text-muted) !important;
+    font-size: 13px;
+    transition: var(--transition-fast);
+}
+
+.container-fluid.bg-primary.text-white a.text-white:hover {
+    color: var(--accent-gold) !important;
+}
+
+/* --------------------------------------------------------------------------
+   10. NAVBAR - Navegación con glassmorphism premium
+   -------------------------------------------------------------------------- */
+.sticky-top {
+    transition: var(--transition-slow);
+    /* -- Fondo glassmorphism oscuro -- */
+    background: rgba(10, 10, 15, 0.85) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.sticky-top.shadow-sm {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+.container-fluid.bg-light {
+    background: transparent !important;
+}
+
+/* -- Logo/Marca con gradiente dorado -- */
+.navbar-brand h1,
+.navbar-brand .text-primary {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 1.8rem !important;
+}
+
+/* -- Links de navegación -- */
+.navbar .navbar-nav .nav-link {
+    padding: 10px 18px;
+    font-size: 15px;
+    font-weight: 500;
+    /* -- Color claro para links del menú -- */
+    color: var(--text-secondary) !important;
+    transition: var(--transition-fast);
+    position: relative;
+}
+
+/* -- Efecto underline animado al hover -- */
+.navbar .navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-gold);
+    transition: var(--transition-normal);
+    transform: translateX(-50%);
+    border-radius: var(--radius-full);
+}
+
+.navbar .navbar-nav .nav-link:hover::after,
+.navbar .navbar-nav .nav-link.active::after {
+    width: 60%;
+}
+
+.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link.active {
+    color: var(--accent-gold) !important;
+}
+
+/* -- Dropdown toggle con icono -- */
+.navbar .dropdown-toggle::after {
+    border: none;
+    content: "\f107";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 700;
+    vertical-align: middle;
+    margin-left: 8px;
+    color: var(--text-muted);
+}
+
+/* -- Menú dropdown con glassmorphism -- */
+@media (min-width: 1200px) {
+    .navbar .nav-item .dropdown-menu {
+        display: block;
+        visibility: hidden;
+        top: 100%;
+        transform: rotateX(-75deg);
+        transform-origin: 0% 0%;
+        border: 1px solid var(--glass-border);
+        transition: var(--transition-normal);
+        opacity: 0;
+        /* -- Fondo oscuro glassmorphism -- */
+        background: rgba(18, 18, 26, 0.95) !important;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-radius: var(--radius-md) !important;
+    }
+}
+
+.dropdown .dropdown-menu a {
+    color: var(--text-secondary) !important;
+    padding: 8px 20px;
+    font-size: 14px;
+    transition: var(--transition-fast);
+}
+
+.dropdown .dropdown-menu a:hover {
+    /* -- Fondo dorado sutil al hover en dropdown -- */
+    background: rgba(212, 168, 83, 0.1) !important;
+    color: var(--accent-gold) !important;
+    padding-left: 25px;
+}
+
+.navbar .nav-item:hover .dropdown-menu {
+    transform: rotateX(0deg);
+    visibility: visible;
+    background: rgba(18, 18, 26, 0.95) !important;
+    border-radius: var(--radius-md) !important;
+    transition: var(--transition-normal);
+    opacity: 1;
+}
+
+.bg-secondary {
+    background: var(--bg-secondary) !important;
+}
+
+/* -- Botones del navbar con bordes dorados -- */
+.navbar .btn-outline-primary {
+    font-size: 13px !important;
+    padding: 6px 14px !important;
+    border: 1px solid rgba(212, 168, 83, 0.4) !important;
+    color: var(--accent-gold) !important;
+    background: transparent !important;
+}
+
+.navbar .btn-outline-primary:hover {
+    background: var(--accent-gold) !important;
+    color: var(--bg-primary) !important;
+    border-color: var(--accent-gold) !important;
+}
+
+/* -- Botón hamburguesa para móvil -- */
+.navbar-toggler {
+    border: 1px solid var(--glass-border) !important;
+    color: var(--accent-gold) !important;
+}
+
+.navbar-toggler .fa-bars {
+    color: var(--accent-gold) !important;
+}
+
+/* -- Navbar collapse en móvil -- */
+.navbar-collapse.bg-light {
+    background: rgba(10, 10, 15, 0.98) !important;
+}
+
+/* -- Modal de búsqueda oscuro -- */
+#searchModal .modal-content {
+    background: rgba(10, 10, 15, 0.95) !important;
+    backdrop-filter: blur(20px);
+}
+
+#searchModal .modal-header {
+    border-bottom: 1px solid var(--glass-border);
+}
+
+#searchModal .modal-title {
+    color: var(--text-primary);
+}
+
+#searchModal .form-control {
+    background: var(--bg-secondary) !important;
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
+}
+
+#searchModal .input-group-text {
+    background: var(--accent-gold) !important;
+    border: none;
+    color: var(--bg-primary);
+}
+
+/* -- Botón de búsqueda circular -- */
+.btn-search {
+    background: transparent !important;
+    border: 1px solid rgba(212, 168, 83, 0.3) !important;
+    color: var(--accent-gold) !important;
+}
+
+.btn-search:hover {
+    background: var(--accent-gold) !important;
+    color: var(--bg-primary) !important;
+}
+
+/* --------------------------------------------------------------------------
+   11. HERO / CAROUSEL - Sección principal con Spline 3D
+   -------------------------------------------------------------------------- */
+
+/* -- Contenedor del hero (reemplaza el carousel visualmente) -- */
+.carousel-header {
+    background: var(--bg-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-item {
+    position: relative;
+    min-height: 100vh;
+    /* -- Fondo oscuro base -- */
+    background: var(--bg-primary);
+}
+
+.carousel-item img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* -- Imagen oscurecida dramáticamente -- */
+    filter: brightness(0.3) saturate(0.8);
+}
+
+/* -- Overlay gradiente oscuro sobre la imagen del carousel -- */
+.carousel-item .carousel-caption {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* -- Gradiente oscuro premium en vez de blanco -- */
+    background: linear-gradient(
+        180deg,
+        rgba(10, 10, 15, 0.7) 0%,
+        rgba(10, 10, 15, 0.5) 40%,
+        rgba(10, 10, 15, 0.8) 100%
+    );
+}
+
+/* -- Títulos del hero con estilo premium -- */
+.carousel-caption .text-uppercase {
+    color: var(--accent-gold) !important;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    letter-spacing: 4px;
+    font-size: 14px !important;
+}
+
+.carousel-caption .display-1 {
+    font-family: 'Outfit', sans-serif !important;
+    font-weight: 900;
+    font-size: clamp(2.5rem, 5vw, 5rem) !important;
+    color: var(--text-primary) !important;
+    line-height: 1.1;
+    margin-bottom: 20px !important;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-caption p.fs-4 {
+    color: var(--text-secondary) !important;
+    font-size: 1.1rem !important;
+    max-width: 600px;
+    margin: 0 auto 30px auto !important;
+    line-height: 1.7;
+}
+
+/* -- Botones del hero -- */
+.carousel-caption .btn-light {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: var(--text-primary) !important;
+    padding: 14px 32px !important;
+    font-size: 15px;
+}
+
+.carousel-caption .btn-light:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-color: var(--accent-gold) !important;
+    color: var(--accent-gold) !important;
+}
+
+.carousel-caption .btn-primary {
+    padding: 14px 32px !important;
+    font-size: 15px;
+}
+
+/* -- Indicadores del carousel -- */
+#carouselId .carousel-indicators li {
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    width: 12px;
+    height: 12px;
+    border-radius: var(--radius-full);
+    margin: 0 5px;
+    transition: var(--transition-normal);
+}
+
+#carouselId .carousel-indicators li.active {
+    background: var(--accent-gold);
+    width: 30px;
+}
+
+/* -- Controles del carousel ocultos (diseño minimalista) -- */
+.carousel-control-prev,
+.carousel-control-next {
+    opacity: 0;
+    width: 60px;
+    transition: var(--transition-normal);
+}
+
+.carousel-header:hover .carousel-control-prev,
+.carousel-header:hover .carousel-control-next {
+    opacity: 0.7;
+}
+
+/* --------------------------------------------------------------------------
+   12. SECCIÓN DE SERVICIOS/PRODUCTOS - Cards premium
+   -------------------------------------------------------------------------- */
+.services {
+    /* -- Fondo oscuro con gradiente sutil -- */
+    background: var(--bg-primary);
+    position: relative;
+}
+
+/* -- Subtítulo de sección dorado -- */
+.services .text-uppercase.text-primary,
+.services .fs-4.text-primary {
+    color: var(--accent-gold) !important;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    letter-spacing: 3px;
+    font-size: 14px !important;
+}
+
+/* -- Título de sección -- */
+.services .display-3 {
+    color: var(--text-primary);
+    font-size: clamp(1.8rem, 3vw, 2.5rem) !important;
+}
+
+/* -- Card de servicio/producto premium -- */
+.services .services-item {
+    /* -- Glassmorphism oscuro con borde dorado sutil -- */
+    background: var(--bg-card) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: var(--radius-lg) !important;
+    transition: var(--transition-normal);
+    overflow: hidden;
+}
+
+/* -- Eliminar el border-4 de bootstrap y usar el propio -- */
+.services .services-item.border-4 {
+    border-width: 1px !important;
+}
+
+.services .services-item.border-end {
+    border-right: 1px solid var(--glass-border) !important;
+}
+
+.services .services-item.border-start {
+    border-left: 1px solid var(--glass-border) !important;
+}
+
+.services .services-item.border-primary {
+    border-color: var(--glass-border) !important;
+}
+
+/* -- Hover con borde dorado y elevación -- */
+.services .services-item:hover {
+    /* -- Hover con gradiente púrpura/dorado en vez de plano -- */
+    background: linear-gradient(135deg, rgba(111, 66, 193, 0.15) 0%, rgba(212, 168, 83, 0.1) 100%) !important;
+    border-color: rgba(212, 168, 83, 0.4) !important;
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-gold);
+}
+
+.services .services-item .services-content h3 {
+    color: var(--text-primary);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.services .services-item .services-content p {
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.services .services-item:hover .services-content h3,
+.services .services-item:hover .services-content p {
+    color: var(--text-primary);
+}
+
+.services .services-item:hover .services-content a.btn {
+    background: var(--gradient-gold) !important;
+    color: var(--bg-primary) !important;
+    border: none !important;
+}
+
+/* -- Imagen del servicio con bordes redondeados -- */
+.services .services-item .services-img {
+    overflow: hidden;
+    border-radius: var(--radius-md);
+}
+
+.services .services-item .services-img img {
+    transition: var(--transition-slow);
+    border-radius: var(--radius-md);
+    filter: brightness(0.85);
+}
+
+.services .services-item:hover .services-img img,
+.services .services-item .services-img img:hover {
+    transform: scale(1.1);
+    filter: brightness(1);
+}
+
+/* -- Fondo bg-light oscurecido globalmente -- */
+.bg-light {
+    background-color: var(--bg-secondary) !important;
+}
+
+/* --------------------------------------------------------------------------
+   13. ABOUT / SOBRE NOSOTROS - Layout modernizado
+   -------------------------------------------------------------------------- */
+.about {
+    background: var(--bg-secondary);
+    position: relative;
+    overflow: hidden;
+}
+
+/* -- Efecto de resplandor decorativo dorado de fondo -- */
+.about::before {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(212, 168, 83, 0.05) 0%, transparent 70%);
+    top: -100px;
+    right: -100px;
+    pointer-events: none;
+}
+
+.about .text-uppercase.text-primary,
+.about .fs-4.text-primary {
+    color: var(--accent-gold) !important;
+    font-weight: 600;
+    letter-spacing: 3px;
+    font-size: 14px !important;
+}
+
+.about .display-4 {
+    color: var(--text-primary);
+    font-size: clamp(1.5rem, 3vw, 2.2rem) !important;
+}
+
+.about p {
+    color: var(--text-secondary);
+}
+
+.about .fa-3x {
+    color: var(--accent-gold) !important;
+}
+
+.about h5 {
+    color: var(--text-primary);
+}
+
+/* -- Video section con borde dorado decorativo -- */
+.video {
+    position: relative;
+    padding-right: 70px;
+    padding-bottom: 70px;
+    border-radius: var(--radius-lg);
+}
+
+.video img {
+    border-radius: var(--radius-lg) !important;
+    border: 2px solid rgba(212, 168, 83, 0.2);
+}
+
+/* -- Botón de play con dorado -- */
+.video .btn-play:before {
+    background: rgba(212, 168, 83, 0.3) !important;
+}
+
+.video .btn-play:after {
+    background: var(--accent-gold) !important;
+}
+
+.video .btn-play span {
+    border-left-color: var(--bg-primary);
+}
+
+/* -- Modal de video oscuro -- */
+#videoModal { z-index: 99999; }
+
+#videoModal .modal-dialog {
+    max-width: 800px;
+    margin: 60px auto;
+}
+
+#videoModal .modal-content {
+    background: var(--bg-primary);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+}
+
+#videoModal .modal-header {
+    border-bottom: 1px solid var(--glass-border);
+}
+
+#videoModal .modal-title {
+    color: var(--text-primary);
+}
+
+#videoModal .modal-body { padding: 0; }
+
+/* --------------------------------------------------------------------------
+   14. APPOINTMENT / COTIZACIÓN - Formulario glassmorphism
+   -------------------------------------------------------------------------- */
+.appointment {
+    /* -- Imagen de fondo oscurecida -- */
+    background: linear-gradient(
+        rgba(10, 10, 15, 0.85),
+        rgba(10, 10, 15, 0.9)
+    ), url(../img/appointment-background.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.appointment .appointment-form {
+    /* -- Glassmorphism oscuro para el formulario -- */
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg) !important;
+}
+
+.appointment .appointment-form .text-primary {
+    color: var(--accent-gold) !important;
+}
+
+.appointment .appointment-form .display-4 {
+    color: var(--text-primary) !important;
+    font-size: clamp(1.5rem, 3vw, 2rem) !important;
+}
+
+/* -- Inputs transparentes del formulario -- */
+.appointment .form-control,
+.appointment .form-select {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: var(--text-primary) !important;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    transition: var(--transition-fast);
+}
+
+.appointment .form-control:focus,
+.appointment .form-select:focus {
+    border-color: var(--accent-gold) !important;
+    box-shadow: 0 0 0 2px rgba(212, 168, 83, 0.15) !important;
+}
+
+.appointment .form-control::placeholder {
+    color: var(--text-muted);
+}
+
+.appointment textarea.form-control {
+    color: var(--text-primary) !important;
+}
+
+/* -- Horario de atención con glassmorphism -- */
+.appointment .appointment-time {
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg) !important;
+}
+
+.appointment .appointment-time .display-5 {
+    color: var(--text-primary);
+}
+
+.appointment .appointment-time .text-dark {
+    color: var(--text-muted) !important;
+}
+
+/* --------------------------------------------------------------------------
+   15. COUNTER / ESTADÍSTICAS - Contadores modernizados
+   -------------------------------------------------------------------------- */
+.counter-section {
+    background: transparent;
+}
+
+.counter-section .counter-item {
+    text-align: center;
+    /* -- Glassmorphism oscuro para cada contador -- */
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg) !important;
+    transition: var(--transition-normal);
+}
+
+.counter-section .counter-item:hover {
+    border-color: rgba(212, 168, 83, 0.3);
+    transform: translateY(-3px);
+}
+
+.counter-section .counter-item .counter-content {
+    position: relative;
+    margin-bottom: 60px;
+    /* -- Gradiente sutil dorado/púrpura para el contenido -- */
+    background: linear-gradient(135deg, rgba(212, 168, 83, 0.05), rgba(111, 66, 193, 0.05)) !important;
+    border-radius: var(--radius-md);
+    z-index: 9;
+}
+
+.counter-section .counter-item .counter-content .text-primary {
+    color: var(--accent-gold) !important;
+}
+
+.counter-section .counter-item .counter-content i.text-primary {
+    color: var(--accent-gold) !important;
+}
+
+.counter-section .counter-item .counter-content .svg-img svg polygon {
+    fill: rgba(212, 168, 83, 0.15) !important;
+}
+
+/* -- Círculo del número del contador -- */
+.counter-section .counter-item .counter-quantity {
+    width: 110px;
+    height: 110px;
+    border-radius: 55px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    /* -- Gradiente dorado para el círculo -- */
+    background: var(--gradient-gold) !important;
+}
+
+.counter-section .counter-item .counter-quantity .text-white {
+    color: var(--bg-primary) !important;
+    font-weight: 800;
+}
+
+/* --------------------------------------------------------------------------
+   16. GALLERY / GALERÍA - Grid con efectos hover premium
+   -------------------------------------------------------------------------- */
+.gallery {
+    background: var(--bg-primary);
+}
+
+.gallery .text-uppercase.text-primary,
+.gallery .fs-4.text-primary {
+    color: var(--accent-gold) !important;
+    letter-spacing: 3px;
+    font-size: 14px !important;
+}
+
+.gallery .display-4 {
+    color: var(--text-primary);
+}
+
+/* -- Tabs de la galería -- */
+.gallery .tab-class .nav-item {
+    padding: 0 0 15px 0;
+}
+
+.gallery .tab-class .nav-item a {
+    /* -- Pill tab con borde sutil -- */
+    background: var(--bg-card) !important;
+    border: 1px solid var(--glass-border) !important;
+    transition: var(--transition-normal);
+}
+
+.gallery .tab-class .nav-item a span {
+    color: var(--text-secondary) !important;
+}
+
+.gallery .tab-class .nav-item a.active {
+    /* -- Tab activo con dorado -- */
+    background: var(--accent-gold) !important;
+    border-color: var(--accent-gold) !important;
+}
+
+.gallery .tab-class .nav-item a.active span {
+    color: var(--bg-primary) !important;
+    font-weight: 600;
+}
+
+.gallery .tab-class .nav-item a:hover {
+    border-color: rgba(212, 168, 83, 0.4) !important;
+}
+
+/* -- Imagen de galería con overlay oscuro -- */
+.gallery .gallery-img {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--glass-border);
+}
+
+.gallery .gallery-img img {
+    transition: var(--transition-slow);
+    filter: brightness(0.8);
+}
+
+.gallery .gallery-img:hover img {
+    transform: scale(1.15);
+    filter: brightness(1);
+}
+
+/* -- Overlay de la galería oscuro con dorado -- */
+.gallery .gallery-img .gallery-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(10, 10, 15, 0.9) 100%);
+    border-radius: var(--radius-lg);
+    transition: var(--transition-normal);
+    opacity: 0;
+    z-index: 1;
+    display: flex;
+    align-items: flex-end;
+}
+
+.gallery .gallery-img .gallery-overlay h4 {
+    color: var(--accent-gold) !important;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.gallery .gallery-img .search-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: var(--transition-normal);
+    opacity: 0;
+    z-index: 2;
+}
+
+.gallery .gallery-img .search-icon i {
+    background: var(--accent-gold) !important;
+    color: var(--bg-primary) !important;
+    border: none;
+}
+
+.gallery .gallery-img:hover .gallery-overlay,
+.gallery .gallery-img:hover .search-icon {
+    opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   17. PRICING - Cards de precios premium con efecto 3D
+   -------------------------------------------------------------------------- */
+.pricing {
+    /* -- Fondo oscuro dramático -- */
+    background: linear-gradient(
+        rgba(10, 10, 15, 0.9),
+        rgba(10, 10, 15, 0.95)
+    ), url(../img/appointment-background.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.pricing .pricing-item {
+    color: var(--text-primary);
+}
+
+/* -- Card de precio con glassmorphism -- */
+.pricing .pricing-item .pricing-content {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg) !important;
+    transition: var(--transition-normal);
+    overflow: hidden;
+}
+
+.pricing .pricing-item .pricing-content:hover {
+    border-color: rgba(212, 168, 83, 0.4);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-gold);
+}
+
+/* -- Header del precio con gradiente -- */
+.pricing .pricing-content .bg-light {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-bottom: 1px solid var(--glass-border) !important;
+}
+
+.pricing .pricing-content .border-primary {
+    border-color: var(--accent-gold) !important;
+}
+
+.pricing .pricing-content .display-4 {
+    color: var(--text-primary);
+}
+
+.pricing .pricing-content .text-primary {
+    color: var(--accent-gold) !important;
+}
+
+.pricing .pricing-content .text-muted {
+    color: var(--text-muted) !important;
+}
+
+.pricing .pricing-content .p-4 p {
+    color: var(--text-secondary);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    padding-bottom: 8px;
+}
+
+.pricing .pricing-content .p-4 p i.text-primary {
+    color: var(--accent-gold) !important;
+}
+
+/* -- Navegación del carousel de precios -- */
+.pricing .owl-carousel.pricing-carousel .owl-nav {
+    position: absolute;
+    top: -60px;
+    right: 0;
+    display: flex;
+    font-size: 40px;
+    color: var(--text-muted);
+}
+
+.pricing .owl-carousel.pricing-carousel .owl-nav .owl-prev,
+.pricing .owl-carousel.pricing-carousel .owl-nav .owl-next {
+    transition: var(--transition-fast);
+    color: var(--text-muted);
+}
+
+.pricing .owl-carousel.pricing-carousel .owl-nav .owl-prev:hover,
+.pricing .owl-carousel.pricing-carousel .owl-nav .owl-next:hover {
+    color: var(--accent-gold);
+}
+
+/* --------------------------------------------------------------------------
+   18. TEAM / EQUIPO - Cards oscuras con hover animado
+   -------------------------------------------------------------------------- */
+.team {
+    background: var(--bg-secondary);
+}
+
+.team .text-uppercase.text-primary,
+.team .fs-4.text-primary {
+    color: var(--accent-gold) !important;
+    letter-spacing: 3px;
+    font-size: 14px !important;
+}
+
+.team .display-4 {
+    color: var(--text-primary);
+}
+
+/* -- Card del miembro del equipo -- */
+.team .team-item {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+    transition: var(--transition-normal);
+}
+
+.team .team-item:hover {
+    border-color: rgba(212, 168, 83, 0.3);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-gold);
+}
+
+/* -- Texto del equipo con gradiente dorado/púrpura -- */
+.team .team-item .team-text {
+    background: linear-gradient(135deg, var(--accent-gold-dark), var(--accent-purple)) !important;
+}
+
+.team .team-item:hover .team-text {
+    background: linear-gradient(135deg, var(--accent-gold), var(--accent-purple-light)) !important;
+}
+
+/* -- Imagen del equipo con overlay oscuro -- */
+.team .team-item .team-img {
+    position: relative;
+}
+
+.team .team-item .team-img::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 15, 0.4);
+    overflow: hidden;
+    width: 100%;
+    height: 0;
+    transition: var(--transition-slow);
+}
+
+.team .team-item:hover .team-img::after {
+    bottom: 0;
+    height: 100%;
+}
+
+/* -- Redes sociales del equipo -- */
+.team .team-item .team-social {
+    position: absolute;
+    top: -180px;
+    left: 20px;
+    opacity: 0;
+    transition: var(--transition-slow);
+}
+
+.team .team-item:hover .team-social {
+    top: 20px;
+    opacity: 1;
+}
+
+.team .team-social .btn {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: var(--text-primary) !important;
+}
+
+.team .team-social .btn:hover {
+    background: var(--accent-gold) !important;
+    color: var(--bg-primary) !important;
+    border-color: var(--accent-gold) !important;
+}
+
+/* --------------------------------------------------------------------------
+   19. TESTIMONIALS - Sección con fondo oscuro y cards de cristal
+   -------------------------------------------------------------------------- */
+.testimonial {
+    background: linear-gradient(
+        rgba(10, 10, 15, 0.9),
+        rgba(10, 10, 15, 0.95)
+    ), url(../img/testimonial-bg.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.testimonial .text-uppercase.text-primary,
+.testimonial .fs-4.text-primary {
+    color: var(--accent-gold) !important;
+    letter-spacing: 3px;
+    font-size: 14px !important;
+}
+
+.testimonial .display-4 {
+    color: var(--text-primary) !important;
+}
+
+/* -- Card de testimonio con glassmorphism -- */
+.testimonial .testimonial-item {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg) !important;
+    backdrop-filter: blur(10px);
+    transition: var(--transition-normal);
+}
+
+.testimonial .testimonial-item:hover {
+    border-color: rgba(212, 168, 83, 0.3);
+}
+
+/* -- Estrellas doradas -- */
+.testimonial .testimonial-item .fa-star.text-primary {
+    color: var(--accent-gold) !important;
+}
+
+.testimonial .testimonial-item .fa-star:not(.text-primary) {
+    color: var(--text-muted);
+}
+
+/* -- Nombre del cliente con dorado -- */
+.testimonial .testimonial-item .text-primary {
+    color: var(--accent-gold) !important;
+}
+
+/* -- Icono de cita -- */
+.testimonial .testimonial-item .fa-quote-right {
+    color: rgba(212, 168, 83, 0.3) !important;
+}
+
+/* -- Avatar con borde dorado -- */
+.testimonial .testimonial-item .rounded-circle {
+    border-color: rgba(212, 168, 83, 0.4) !important;
+    border-style: solid !important;
+    border-width: 2px !important;
+}
+
+/* -- Navegación del carousel de testimonios -- */
+.testimonial .owl-carousel.testimonial-carousel .owl-nav {
+    position: absolute;
+    top: -60px;
+    right: 0;
+    display: flex;
+    font-size: 40px;
+    color: var(--text-muted);
+}
+
+.testimonial .owl-carousel.testimonial-carousel .owl-nav .owl-prev:hover,
+.testimonial .owl-carousel.testimonial-carousel .owl-nav .owl-next:hover {
+    color: var(--accent-gold);
+}
+
+/* --------------------------------------------------------------------------
+   20. CONTACT / CONTACTO - Información de contacto y mapa
+   -------------------------------------------------------------------------- */
+
+/* -- Cards de contacto con glassmorphism -- */
+.container-fluid.py-5 .border.border-primary {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: var(--radius-md) !important;
+    transition: var(--transition-normal);
+}
+
+.container-fluid.py-5 .border.border-primary:hover {
+    border-color: rgba(212, 168, 83, 0.3) !important;
+    transform: translateY(-3px);
+}
+
+.container-fluid.py-5 .border.border-primary h4 {
+    color: var(--text-primary);
+    font-family: 'Outfit', sans-serif;
+}
+
+.container-fluid.py-5 .border.border-primary p {
+    color: var(--text-secondary);
+}
+
+.container-fluid.py-5 .border.border-primary i.text-primary {
+    color: var(--accent-gold) !important;
+}
+
+/* -- Barra de redes sociales debajo del mapa -- */
+.rounded-bottom.bg-primary {
+    background: linear-gradient(135deg, var(--accent-gold-dark), var(--accent-purple)) !important;
+}
+
+/* -- Mapa con overlay oscuro -- */
+.container-fluid.py-5 iframe {
+    filter: brightness(0.7) contrast(1.1) saturate(0.5);
+    border: 1px solid var(--glass-border);
+}
+
+/* --------------------------------------------------------------------------
+   21. BREADCRUMB - Página de encabezado de subpáginas
+   -------------------------------------------------------------------------- */
+.bg-breadcrumb {
+    background: linear-gradient(rgba(10, 10, 15, 0.85), rgba(10, 10, 15, 0.9)), url(../img/appointment-background.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+/* --------------------------------------------------------------------------
+   22. FOOTER - Pie de página oscuro premium
+   -------------------------------------------------------------------------- */
+.footer {
+    background: var(--bg-secondary) !important;
+    border-top: 1px solid var(--glass-border);
+}
+
+.footer .footer-item h4 {
+    color: var(--accent-gold) !important;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+}
+
+.footer .footer-item a,
+.footer .footer-item p {
+    color: var(--text-muted) !important;
+    line-height: 40px;
+    font-size: 15px;
+    transition: var(--transition-fast);
+}
+
+.footer .footer-item a:hover {
+    color: var(--accent-gold) !important;
+    padding-left: 5px;
+    letter-spacing: normal;
+}
+
+.footer .footer-item a i {
+    color: var(--accent-gold);
+    margin-right: 5px;
+}
+
+/* -- Input del newsletter -- */
+.footer .form-control {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--glass-border) !important;
+    color: var(--text-primary) !important;
+    border-radius: var(--radius-full) !important;
+}
+
+.footer .form-control::placeholder {
+    color: var(--text-muted);
+}
+
+/* -- Texto de horario en el footer -- */
+.footer .text-muted {
+    color: var(--text-muted) !important;
+}
+
+.footer .text-white {
+    color: var(--text-primary) !important;
+}
+
+.footer .text-secondary {
+    color: var(--accent-gold) !important;
+}
+
+/* --------------------------------------------------------------------------
+   23. COPYRIGHT - Barra inferior
+   -------------------------------------------------------------------------- */
+.copyright {
+    border-top: 1px solid var(--glass-border) !important;
+    background: var(--bg-primary) !important;
+}
+
+.copyright .text-light a {
+    color: var(--accent-gold) !important;
+}
+
+.copyright .border-bottom {
+    border-color: var(--accent-gold) !important;
+}
+
+/* --------------------------------------------------------------------------
+   24. SPLINE 3D VIEWER - Integración con Spline Design
+   -------------------------------------------------------------------------- */
+
+/* -- OCULTAR el watermark 'Built with Spline' -- */
+spline-viewer::part(logo) {
+    display: none !important;
+}
+
+/* -- Fallback: ocultar cualquier marca de agua de Spline via shadow DOM -- */
+spline-viewer {
+    --logo-display: none;
+}
+
+/* -- Ocultar logo de Spline que aparece como overlay -- */
+.spline-hero-container a[href*="spline"],
+.spline-hero-container div[id*="logo"],
+spline-viewer + a,
+spline-viewer ~ a {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* -- Contenedor del hero con Spline 3D -- */
+.spline-hero-container {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-primary);
+    overflow: hidden;
+}
+
+/* -- Viewer de Spline como fondo del hero -- */
+.spline-hero-container spline-viewer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.6;
+}
+
+/* -- Contenido sobre el Spline 3D -- */
+.spline-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 40px;
+    max-width: 900px;
+}
+
+.spline-hero-content h1 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 1.05;
+    margin-bottom: 20px;
+}
+
+.spline-hero-content .subtitle {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 35px auto;
+    line-height: 1.7;
+}
+
+/* --------------------------------------------------------------------------
+   25. FORM ELEMENTS - Estilos globales para formularios
+   -------------------------------------------------------------------------- */
+.form-control,
+.form-select {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--glass-border) !important;
+    color: var(--text-primary) !important;
+    border-radius: var(--radius-sm) !important;
+    transition: var(--transition-fast);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--accent-gold) !important;
+    box-shadow: 0 0 0 2px rgba(212, 168, 83, 0.15) !important;
+    background: var(--bg-card) !important;
+    color: var(--text-primary) !important;
+}
+
+/* --------------------------------------------------------------------------
+   26. RESPONSIVE - Ajustes para diferentes tamaños de pantalla
+   -------------------------------------------------------------------------- */
+@media (max-width: 991px) {
+    /* -- Navbar móvil en pantallas medianas -- */
+    .navbar-collapse {
+        padding: 20px;
+        border-top: 1px solid var(--glass-border);
+    }
+
+    .navbar .d-flex.align-items-center {
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid var(--glass-border);
+    }
+
+    .carousel-caption .display-1 {
+        font-size: 2rem !important;
+    }
+}
+
+@media (max-width: 767px) {
+    /* -- Ajustes de hero para móvil -- */
+    .carousel-item {
+        min-height: 70vh;
+    }
+
+    .carousel-caption p.fs-4 {
+        font-size: 0.9rem !important;
+    }
+
+    /* -- Ocultar padding extra en móvil -- */
+    .py-5 {
+        padding-top: 2.5rem !important;
+        padding-bottom: 2.5rem !important;
+    }
+
+    /* -- Spline hero responsive -- */
+    .spline-hero-content h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 575px) {
+    /* -- Ajustes extra small -- */
+    .carousel-caption .display-1 {
+        font-size: 1.8rem !important;
+    }
+
+    .services .services-item {
+        margin-bottom: 10px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   27. DARK MODE OVERRIDES - Sobreescrituras globales de Bootstrap
+   -------------------------------------------------------------------------- */
+
+/* -- Override de text-dark para que sea legible en fondo oscuro -- */
+.text-dark {
+    color: var(--text-primary) !important;
+}
+
+/* -- Override de text-primary para usar dorado -- */
+.text-primary {
+    color: var(--accent-gold) !important;
+}
+
+/* -- Override de bg-white para usar oscuro -- */
+.bg-white {
+    background-color: var(--bg-card) !important;
+}
+
+/* -- Override border-primary -- */
+.border-primary {
+    border-color: var(--accent-gold) !important;
+}
+
+/* -- Sobreescribir sombras de bootstrap -- */
+.shadow-sm {
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* -- Efecto de brillo sutil para cards en hover -- */
+.pricing .pricing-content:hover::before,
+.services .services-item:hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(212, 168, 83, 0.03),
+        transparent
+    );
+    animation: shimmer 2s ease-in-out;
+    pointer-events: none;
+}
+
+/* -- Estilos para el contact section -- */
+.contact {
+    background: linear-gradient(rgba(10, 10, 15, 0.9), rgba(10, 10, 15, 0.95)), url(../img/appointment-background.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.contact .contact-form {
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+}
+
+/* --------------------------------------------------------------------------
+   FIN DEL ARCHIVO MODERN.CSS
+   ========================================================================== */

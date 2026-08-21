@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Seguimiento de Paquetes - Clave del Peluquero Exitoso</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="seguimiento paquetes, geocercas, rastreo, entregas Caldas" name="keywords">
+        <meta content="Sistema de seguimiento de paquetes con geocercas dinámicas para Clave del Peluquero Exitoso." name="description">
+
+        <!-- REDISEÑO 2026: Google Web Fonts modernos -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+        <!-- Icon Font Stylesheet -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+        <!-- Libraries Stylesheet -->
+        <link href="lib/animate/animate.min.css" rel="stylesheet">
+        <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+        <!-- Leaflet CSS (Mapa interactivo gratuito) -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+              integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+              crossorigin=""/>
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet (original) -->
+        <link href="css/style.css" rel="stylesheet">
+
+        <!-- REDISEÑO 2026: Sistema de diseño premium oscuro -->
+        <link href="css/modern.css" rel="stylesheet">
+
+        <!-- REDISEÑO 2026: Estilos específicos del seguimiento -->
+        <link href="css/seguimiento.css" rel="stylesheet">
+
+        <!-- Chatbot CSS -->
+        <link href="css/chatbot.css" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <!-- REDISEÑO 2026: Spinner con fondo oscuro -->
+        <div id="spinner" class="show w-100 vh-100 position-fixed translate-middle top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-grow text-primary" role="status"></div>
+        </div>
+        <!-- Spinner End -->
+
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-primary text-white d-none d-lg-flex">
+        <div class="container py-2">
+            <div class="d-flex justify-content-between">
+                <div class="d-flex">
+                    <a class="text-white me-3" href="#"><i class="fas fa-map-marker-alt me-2"></i>Sucursal-Caldas</a>
+                    <a class="text-white me-3" href="#"><i class="fas fa-phone-alt me-2"></i>+57 321 8025941</a>
+                    <a class="text-white" href="#"><i class="fas fa-envelope me-2"></i>contacto@clavedelpeluquero.com</a>
+                </div>
+                <div class="d-flex">
+                    <a class="text-white me-3" href="https://www.facebook.com/share/1B2QGsxRqq/"><i class="fab fa-facebook-f"></i></a>
+                    <a class="text-white me-3" href="https://www.instagram.com/la_clave_del_peluquero_exitoso?igsh=MWJhcGdld2V5Yzg2dQ=="><i class="fab fa-instagram"></i></a>
+                    <a class="text-white" href="https://wa.me/3218025941"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+    <!-- Navbar Start -->
+    <div class="container-fluid sticky-top px-0">
+        <div class="container-fluid bg-light">
+            <div class="container px-0">
+                <nav class="navbar navbar-light navbar-expand-lg">
+                    <a href="index.html" class="navbar-brand">
+                        <h1 class="text-primary display-5">Clave del Peluquero</h1>
+                    </a>
+                    <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="fa fa-bars text-primary"></span>
+                    </button>
+                    <div class="collapse navbar-collapse bg-light" id="navbarCollapse">
+                        <div class="navbar-nav mx-auto">
+                            <a href="index.html" class="nav-item nav-link">Inicio</a>
+                            <a href="service.html" class="nav-item nav-link">Servicios</a>
+                            <a href="price.html" class="nav-item nav-link">Productos</a>
+                            <a href="seguimiento.html" class="nav-item nav-link active">Seguimiento</a>
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Más</a>
+                                <div class="dropdown-menu m-0 bg-secondary rounded-0">
+                                    <a href="team.html" class="dropdown-item">Nosotros</a>
+                                    <a href="testimonial.html" class="dropdown-item">Blog</a>
+                                    <a href="contact.html" class="dropdown-item">Contacto</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <a href="https://clavedelpeluquero.venndelo.com/" class="btn btn-outline-primary btn-sm me-2" target="_blank">
+                                <i class="fas fa-shopping-cart"></i> Carrito
+                            </a>
+                            <a href="acceder.html" class="btn btn-outline-primary btn-sm me-2">
+                                <i class="fas fa-user me-1"></i> Iniciar
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+
+        <!-- ================================================================ -->
+        <!-- HERO: Seguimiento de Paquetes                                    -->
+        <!-- ================================================================ -->
+        <div class="seguimiento-hero">
+            <div class="container position-relative">
+                <div class="row align-items-center">
+                    <div class="col-lg-7">
+                        <div class="gold-line mb-3" style="width: 40px; height: 3px; background: linear-gradient(90deg, #d4a853, transparent); border-radius: 2px;"></div>
+                        <h4 class="text-uppercase mb-2" style="color: #d4a853; letter-spacing: 4px; font-size: 12px; font-weight: 600;">
+                            <i class="fas fa-satellite-dish me-2"></i>Sistema de Rastreo
+                        </h4>
+                        <h1>Seguimiento de Paquetes</h1>
+                        <p class="subtitle">Rastrea tu pedido en tiempo real con nuestro sistema de geocercas dinámicas. Ingresa tu código de rastreo para conocer la ubicación exacta de tu paquete.</p>
+                    </div>
+                    <div class="col-lg-5 text-end d-none d-lg-block">
+                        <div class="status-badge">
+                            <span class="pulse"></span>
+                            <span id="contadorPedidos">0 pedidos</span> cargados
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección de Rastreo -->
+                <div class="tracking-section mt-4">
+                    <h5 style="color: #fff; font-family: 'Outfit', sans-serif; font-weight: 600; margin-bottom: 15px;">
+                        <i class="fas fa-search-location me-2" style="color: #d4a853;"></i>Rastrear Paquete
+                    </h5>
+                    <div class="tracking-input-group">
+                        <input type="text" id="inputCodigoRastreo" placeholder="Ej: CLV-2026-12345" maxlength="15">
+                        <button onclick="rastrearPaquete()">
+                            <i class="fas fa-search me-2"></i>Rastrear
+                        </button>
+                    </div>
+
+                    <!-- Resultado del rastreo -->
+                    <div class="tracking-result" id="trackingResult">
+                        <div class="d-flex align-items-center gap-2 mb-3">
+                            <i class="fas fa-box" style="color: #d4a853;"></i>
+                            <strong id="resultCodigo" style="color: #d4a853;">&mdash;</strong>
+                        </div>
+                        <div class="result-grid">
+                            <div class="result-item">
+                                <div class="label">Producto</div>
+                                <div class="value" id="resultProducto">&mdash;</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="label">Estado</div>
+                                <div class="value" id="resultEstado">&mdash;</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="label">Peso</div>
+                                <div class="value" id="resultPeso">&mdash;</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="label">Geocerca</div>
+                                <div class="value" id="resultGeocerca">&mdash;</div>
+                            </div>
+                        </div>
+
+                        <!-- Barra de progreso -->
+                        <div class="progress-track">
+                            <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                        </div>
+
+                        <!-- Pasos del envío -->
+                        <div class="shipping-steps" id="shippingSteps">
+                            <div class="shipping-step" data-step="procesando">
+                                <div class="step-dot"><i class="fas fa-clipboard-check" style="font-size: 12px;"></i></div>
+                                <div class="step-label">Procesando</div>
+                            </div>
+                            <div class="shipping-step" data-step="preparado">
+                                <div class="step-dot"><i class="fas fa-box-open" style="font-size: 12px;"></i></div>
+                                <div class="step-label">Preparado</div>
+                            </div>
+                            <div class="shipping-step" data-step="en_transito">
+                                <div class="step-dot"><i class="fas fa-truck" style="font-size: 12px;"></i></div>
+                                <div class="step-label">En Tránsito</div>
+                            </div>
+                            <div class="shipping-step" data-step="en_geocerca">
+                                <div class="step-dot"><i class="fas fa-map-pin" style="font-size: 12px;"></i></div>
+                                <div class="step-label">En Geocerca</div>
+                            </div>
+                            <div class="shipping-step" data-step="entregado">
+                                <div class="step-dot"><i class="fas fa-check" style="font-size: 12px;"></i></div>
+                                <div class="step-label">Entregado</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ================================================================ -->
+        <!-- CONTENIDO PRINCIPAL: Mapa + Panel de Control                     -->
+        <!-- ================================================================ -->
+        <div class="container-fluid py-5" style="background: #0a0a0f;">
+            <div class="container">
+                <div class="row g-4">
+
+                    <!-- ========== PANEL DE CONTROL (SIDEBAR) ========== -->
+                    <div class="col-lg-3">
+                        <div class="control-panel">
+                            <h3><i class="fas fa-sliders-h"></i> Panel de Control</h3>
+
+                            <!-- Número de Pedidos -->
+                            <div class="control-group">
+                                <label>Número de Pedidos</label>
+                            </div>
+                            <div class="qty-buttons">
+                                <button class="qty-btn" onclick="setNumPedidos(50)">50</button>
+                                <button class="qty-btn active" onclick="setNumPedidos(100)">100</button>
+                                <button class="qty-btn" onclick="setNumPedidos(250)">250</button>
+                                <button class="qty-btn" onclick="setNumPedidos(500)">500</button>
+                            </div>
+
+                            <!-- Radio Máximo (dMax) -->
+                            <div class="control-group">
+                                <label>Radio Máximo (D_MAX) <span class="value" id="valDmax">0.015</span></label>
+                                <input type="range" id="sliderDmax" min="0.005" max="0.050" step="0.001" value="0.015"
+                                       oninput="document.getElementById('valDmax').textContent = this.value">
+                            </div>
+
+                            <!-- Capacidad Máxima -->
+                            <div class="control-group">
+                                <label>Capacidad Máxima (KG) <span class="value" id="valCapmax">15</span></label>
+                                <input type="range" id="sliderCapmax" min="5" max="50" step="1" value="15"
+                                       oninput="document.getElementById('valCapmax').textContent = this.value">
+                            </div>
+
+                            <!-- Botón Generar -->
+                            <button class="btn-generar" onclick="handleGenerar()">
+                                <i class="fas fa-sync-alt"></i> Generar Nuevos Pedidos
+                            </button>
+
+                            <!-- Separador -->
+                            <div class="control-separator">
+                                <i class="fas fa-bolt"></i> Ejecutar Algoritmo
+                            </div>
+
+                            <!-- Botones de Algoritmos -->
+                            <button class="btn-algoritmo btn-python" id="btnPython" onclick="handleRunPython()">
+                                <i class="fab fa-python"></i> Python (simulado)
+                            </button>
+                            <button class="btn-algoritmo btn-wasm" id="btnWasm" onclick="handleRunWASM()">
+                                <i class="fas fa-microchip"></i> C++ (WASM)
+                            </button>
+                            <button class="btn-algoritmo btn-js" id="btnJS" onclick="handleRunJS()">
+                                <i class="fab fa-js-square"></i> JavaScript
+                            </button>
+                            <button class="btn-algoritmo btn-all" id="btnAll" onclick="handleRunAll()">
+                                <i class="fas fa-play-circle"></i> Ejecutar Todos
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- ========== MAPA + DASHBOARD ========== -->
+                    <div class="col-lg-9">
+
+                        <!-- Mapa Leaflet -->
+                        <div class="map-container animate-fade-up">
+                            <div class="map-header">
+                                <h3><i class="fas fa-map-marked-alt" style="color: #d4a853;"></i> Mapa de Geocercas</h3>
+                                <div class="map-stats">
+                                    <div class="map-stat">Geocercas: <span id="contadorGeocercas">0</span></div>
+                                    <div class="map-stat">Centro: <span>Caldas, Ant.</span></div>
+                                </div>
+                            </div>
+                            <div id="mapSeguimiento"></div>
+                        </div>
+
+                        <!-- Dashboard de Benchmark -->
+                        <div class="benchmark-dashboard animate-fade-up">
+                            <h3><i class="fas fa-chart-bar"></i> Benchmark Comparativo</h3>
+                            <div class="benchmark-cards" id="benchmarkCards">
+                                <!-- JS Card -->
+                                <div class="bench-card" id="cardJS">
+                                    <div class="lang-name">
+                                        <div class="lang-icon" style="background: #F7DF1E22; color: #F7DF1E;">JS</div>
+                                        JavaScript
+                                    </div>
+                                    <div class="metric">
+                                        <div class="metric-label">Tiempo</div>
+                                        <div class="metric-value" id="jsTime">&mdash;</div>
+                                    </div>
+                                    <div class="metric">
+                                        <div class="metric-label">Grupos</div>
+                                        <div class="metric-value" id="jsGroups" style="font-size: 16px;">&mdash;</div>
+                                    </div>
+                                </div>
+                                <!-- Python Card -->
+                                <div class="bench-card" id="cardPython">
+                                    <div class="lang-name">
+                                        <div class="lang-icon" style="background: #3776AB22; color: #3776AB;">Py</div>
+                                        Python
+                                    </div>
+                                    <div class="metric">
+                                        <div class="metric-label">Tiempo</div>
+                                        <div class="metric-value" id="pyTime">&mdash;</div>
+                                    </div>
+                                    <div class="metric">
+                                        <div class="metric-label">Grupos</div>
+                                        <div class="metric-value" id="pyGroups" style="font-size: 16px;">&mdash;</div>
+                                    </div>
+                                </div>
+                                <!-- C++ Card -->
+                                <div class="bench-card" id="cardWASM">
+                                    <div class="lang-name">
+                                        <div class="lang-icon" style="background: #00599C22; color: #17a2b8;">C+</div>
+                                        C++ (WASM)
+                                    </div>
+                                    <div class="metric">
+                                        <div class="metric-label">Tiempo</div>
+                                        <div class="metric-value" id="wasmTime">&mdash;</div>
+                                    </div>
+                                    <div class="metric">
+                                        <div class="metric-label">Grupos</div>
+                                        <div class="metric-value" id="wasmGroups" style="font-size: 16px;">&mdash;</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tabla de Paquetes -->
+                        <div class="paquetes-table-container animate-fade-up">
+                            <div class="paquetes-table-header">
+                                <h3><i class="fas fa-boxes" style="color: #d4a853;"></i> Paquetes Generados</h3>
+                                <div class="status-badge" style="font-size: 11px;">
+                                    <span class="pulse"></span>
+                                    <span id="tablaPedidosCount">0</span> registros
+                                </div>
+                            </div>
+                            <div style="overflow-x: auto;">
+                                <table class="paquetes-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Código</th>
+                                            <th>Producto</th>
+                                            <th>Peso</th>
+                                            <th>Estado</th>
+                                            <th>Geocerca</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tablaPaquetesBody">
+                                        <tr>
+                                            <td colspan="5" style="text-align: center; color: #6b6b80; padding: 40px;">
+                                                <i class="fas fa-box-open" style="font-size: 24px; display: block; margin-bottom: 10px;"></i>
+                                                Haz clic en "Generar Nuevos Pedidos" para comenzar
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ================================================================ -->
+        <!-- FOOTER: Idéntico al del index principal                          -->
+        <!-- ================================================================ -->
+        <div class="container-fluid footer py-5">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item">
+                            <h4 class="mb-4 text-white">Seguimiento</h4>
+                            <p class="text-white">Sistema de geocercas dinámicas para rastrear cada paquete vendido. Ingresa tu código de rastreo para conocer la ubicación de tu envío.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="mb-4 text-white">Nuestros Servicios</h4>
+                            <a href="service.html"><i class="fas fa-angle-right me-2"></i> Cortes Profesionales</a>
+                            <a href="service.html"><i class="fas fa-angle-right me-2"></i> Coloración</a>
+                            <a href="service.html"><i class="fas fa-angle-right me-2"></i> Tratamientos</a>
+                            <a href="price.html"><i class="fas fa-angle-right me-2"></i> Productos</a>
+                            <a href="seguimiento.html"><i class="fas fa-angle-right me-2"></i> Seguimiento</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="mb-4 text-white">Horario</h4>
+                            <p class="text-muted mb-0">Lunes a Sábado: <span class="text-white">10:00 AM - 7:00 PM</span></p>
+                            <p class="text-muted mb-0">Domingo: <span class="text-white">9:00 AM - 3:00 PM</span></p>
+                            <h4 class="my-4 text-white">Dirección</h4>
+                            <p class="mb-0"><i class="fas fa-map-marker-alt text-secondary me-2"></i>Carrera 49 #134 sur-41, Caldas, Antioquia</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="mb-4 text-white">Síguenos</h4>
+                            <a href="https://www.facebook.com/share/1B2QGsxRqq/"><i class="fas fa-angle-right me-2"></i> Facebook</a>
+                            <a href="https://www.instagram.com/la_clave_del_peluquero_exitoso"><i class="fas fa-angle-right me-2"></i> Instagram</a>
+                            <a href="https://wa.me/3218025941"><i class="fas fa-angle-right me-2"></i> WhatsApp</a>
+                            <h4 class="my-4 text-white">Contacto</h4>
+                            <p class="mb-0"><i class="fas fa-envelope text-secondary me-2"></i> contacto@clavedelpeluquero.com</p>
+                            <p class="mb-0"><i class="fas fa-phone text-secondary me-2"></i> +57 321 8025941</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+        <!-- Copyright Start -->
+        <div class="container-fluid copyright py-4">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-6 text-center text-md-start mb-md-0">
+                        <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Clave del Peluquero Exitoso</a>, Todos los derechos reservados.</span>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end text-white">
+                        Desarrollado con <i class="fas fa-heart" style="color: #d4a853;"></i> por Marco
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary btn-primary-outline-0 btn-md-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+
+    <!-- ================================================================ -->
+    <!-- JAVASCRIPT LIBRARIES                                             -->
+    <!-- ================================================================ -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <!-- Leaflet JS (Mapa gratuito) -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
+
+    <!-- REDISEÑO 2026: Motor de Geocercas -->
+    <script src="js/geocercas.js"></script>
+
+    <!-- REDISEÑO 2026: Controlador del Mapa -->
+    <script src="js/seguimiento-map.js"></script>
+
+    <!-- ================================================================ -->
+    <!-- JAVASCRIPT: Controlador de la Página de Seguimiento              -->
+    <!-- ================================================================ -->
+    <script>
+    // ============================================================
+    // VARIABLES DE ESTADO GLOBAL
+    // ============================================================
+    var numPedidos = 100;         // Cantidad de pedidos actual
+    var pedidosActuales = [];     // Array de pedidos generados
+    var ultimoResultado = null;   // Último resultado del algoritmo
+    var running = null;           // Algoritmo en ejecución
+
+    // ============================================================
+    // INICIALIZACIÓN AL CARGAR LA PÁGINA
+    // ============================================================
+    document.addEventListener('DOMContentLoaded', function() {
+        // Inicializar el mapa Leaflet
+        inicializarMapa();
+
+        // Generar pedidos iniciales
+        pedidosActuales = generarPedidos(numPedidos);
+        dibujarPedidos(pedidosActuales);
+        actualizarTablaPaquetes(pedidosActuales);
+        ajustarVistaMapa(pedidosActuales);
+
+        console.log('✅ Página de seguimiento inicializada');
+    });
+
+    // ============================================================
+    // FUNCIONES DEL PANEL DE CONTROL
+    // ============================================================
+
+    /**
+     * Cambia la cantidad de pedidos y actualiza botones.
+     * @param {number} n - Cantidad de pedidos
+     */
+    function setNumPedidos(n) {
+        numPedidos = n;
+        // Actualizar botones activos
+        document.querySelectorAll('.qty-btn').forEach(function(btn) {
+            btn.classList.remove('active');
+            if (parseInt(btn.textContent) === n) {
+                btn.classList.add('active');
+            }
+        });
+    }
+
+    /**
+     * Genera nuevos pedidos y actualiza la visualización.
+     */
+    function handleGenerar() {
+        var dMax = parseFloat(document.getElementById('sliderDmax').value);
+        var capMax = parseInt(document.getElementById('sliderCapmax').value);
+
+        pedidosActuales = generarPedidos(numPedidos);
+        ultimoResultado = null;
+
+        // Limpiar geocercas anteriores y redibujar
+        limpiarMapa();
+        dibujarPedidos(pedidosActuales);
+        actualizarTablaPaquetes(pedidosActuales);
+        ajustarVistaMapa(pedidosActuales);
+
+        // Resetear benchmark
+        resetBenchmark();
+    }
+
+    // ============================================================
+    // FUNCIONES DE EJECUCIÓN DE ALGORITMOS
+    // ============================================================
+
+    /**
+     * Ejecuta el algoritmo JavaScript y muestra resultados.
+     */
+    async function handleRunJS() {
+        if (running) return;
+        running = 'js';
+        setBtnLoading('btnJS', true);
+
+        await new Promise(function(r) { setTimeout(r, 50); });
+
+        var dMax = parseFloat(document.getElementById('sliderDmax').value);
+        var capMax = parseInt(document.getElementById('sliderCapmax').value);
+
+        var result = ejecutarAlgoritmoJS(pedidosActuales, dMax, capMax);
+        ultimoResultado = result;
+
+        // Actualizar mapa
+        dibujarPedidos(pedidosActuales);
+        dibujarGeocercas(result, dMax);
+        dibujarRutas(result);
+
+        // Actualizar dashboard
+        document.getElementById('jsTime').innerHTML = result.tiempo_ms + '<span class="metric-unit">ms</span>';
+        document.getElementById('jsGroups').textContent = result.num_grupos;
+
+        // Actualizar tabla
+        actualizarTablaPaquetes(pedidosActuales);
+
+        // Guardar benchmark
+        guardarBenchmark({ lenguaje: 'JavaScript', tiempo_ms: result.tiempo_ms, num_grupos: result.num_grupos, num_pedidos: pedidosActuales.length, timestamp: new Date().toLocaleTimeString() });
+
+        setBtnLoading('btnJS', false);
+        running = null;
+    }
+
+    /**
+     * Ejecuta la simulación de Python y muestra resultados.
+     */
+    async function handleRunPython() {
+        if (running) return;
+        running = 'python';
+        setBtnLoading('btnPython', true);
+
+        var dMax = parseFloat(document.getElementById('sliderDmax').value);
+        var capMax = parseInt(document.getElementById('sliderCapmax').value);
+
+        var result = await simularAlgoritmoPython(pedidosActuales, dMax, capMax);
+        ultimoResultado = result;
+
+        dibujarPedidos(pedidosActuales);
+        dibujarGeocercas(result, dMax);
+        dibujarRutas(result);
+
+        document.getElementById('pyTime').innerHTML = result.tiempo_ms + '<span class="metric-unit">ms</span>';
+        document.getElementById('pyGroups').textContent = result.num_grupos;
+
+        actualizarTablaPaquetes(pedidosActuales);
+        guardarBenchmark({ lenguaje: 'Python', tiempo_ms: result.tiempo_ms, num_grupos: result.num_grupos, num_pedidos: pedidosActuales.length, timestamp: new Date().toLocaleTimeString() });
+
+        setBtnLoading('btnPython', false);
+        running = null;
+    }
+
+    /**
+     * Ejecuta la simulación de C++ WASM y muestra resultados.
+     */
+    async function handleRunWASM() {
+        if (running) return;
+        running = 'wasm';
+        setBtnLoading('btnWasm', true);
+
+        var dMax = parseFloat(document.getElementById('sliderDmax').value);
+        var capMax = parseInt(document.getElementById('sliderCapmax').value);
+
+        var result = await simularAlgoritmoWASM(pedidosActuales, dMax, capMax);
+        ultimoResultado = result;
+
+        dibujarPedidos(pedidosActuales);
+        dibujarGeocercas(result, dMax);
+        dibujarRutas(result);
+
+        document.getElementById('wasmTime').innerHTML = result.tiempo_ms + '<span class="metric-unit">ms</span>';
+        document.getElementById('wasmGroups').textContent = result.num_grupos;
+
+        actualizarTablaPaquetes(pedidosActuales);
+        guardarBenchmark({ lenguaje: 'C++ WASM', tiempo_ms: result.tiempo_ms, num_grupos: result.num_grupos, num_pedidos: pedidosActuales.length, timestamp: new Date().toLocaleTimeString() });
+
+        setBtnLoading('btnWasm', false);
+        running = null;
+    }
+
+    /**
+     * Ejecuta todos los algoritmos secuencialmente.
+     */
+    async function handleRunAll() {
+        if (running) return;
+        running = 'all';
+        setBtnLoading('btnAll', true);
+
+        await handleRunPython();
+        running = 'all';
+        await handleRunWASM();
+        running = 'all';
+        await handleRunJS();
+
+        setBtnLoading('btnAll', false);
+        running = null;
+    }
+
+    // ============================================================
+    // FUNCIÓN DE RASTREO DE PAQUETES
+    // ============================================================
+
+    /**
+     * Busca un paquete por código y muestra su información.
+     */
+    function rastrearPaquete() {
+        var codigo = document.getElementById('inputCodigoRastreo').value.trim().toUpperCase();
+        var resultDiv = document.getElementById('trackingResult');
+
+        if (!codigo) {
+            alert('Por favor ingresa un código de rastreo.');
+            return;
+        }
+
+        // Buscar en los pedidos actuales
+        var paquete = pedidosActuales.find(function(p) {
+            return p.codigo === codigo;
+        });
+
+        if (!paquete) {
+            // Si no se encuentra, mostrar mensaje con datos simulados
+            resultDiv.classList.add('active');
+            document.getElementById('resultCodigo').textContent = codigo;
+            document.getElementById('resultProducto').textContent = 'No encontrado';
+            document.getElementById('resultEstado').innerHTML = '<span class="estado-badge devuelto">No registrado</span>';
+            document.getElementById('resultPeso').textContent = '—';
+            document.getElementById('resultGeocerca').textContent = '—';
+            actualizarProgreso('procesando');
+            return;
+        }
+
+        // Mostrar resultado
+        resultDiv.classList.add('active');
+        document.getElementById('resultCodigo').textContent = paquete.codigo;
+        document.getElementById('resultProducto').textContent = paquete.producto;
+        document.getElementById('resultEstado').innerHTML = '<span class="estado-badge ' + paquete.estado + '">' + traducirEstado(paquete.estado) + '</span>';
+        document.getElementById('resultPeso').textContent = paquete.peso + ' kg';
+        document.getElementById('resultGeocerca').textContent = paquete.grupo >= 0 ? 'Zona #' + (paquete.grupo + 1) : 'Sin asignar';
+
+        // Actualizar progreso
+        actualizarProgreso(paquete.estado);
+    }
+
+    /**
+     * Actualiza la barra de progreso y los pasos del envío.
+     * @param {string} estado - Estado actual del paquete
+     */
+    function actualizarProgreso(estado) {
+        var pasos = ['procesando', 'preparado', 'en_transito', 'en_geocerca', 'entregado'];
+        var indice = pasos.indexOf(estado);
+        if (indice === -1) indice = 0;
+
+        // Actualizar barra
+        var porcentaje = ((indice + 1) / pasos.length) * 100;
+        document.getElementById('progressFill').style.width = porcentaje + '%';
+
+        // Actualizar pasos visuales
+        document.querySelectorAll('.shipping-step').forEach(function(stepEl) {
+            var stepName = stepEl.getAttribute('data-step');
+            var stepIndex = pasos.indexOf(stepName);
+
+            stepEl.classList.remove('completed', 'active');
+            if (stepIndex < indice) {
+                stepEl.classList.add('completed');
+            } else if (stepIndex === indice) {
+                stepEl.classList.add('active');
+            }
+        });
+    }
+
+    // ============================================================
+    // ACTUALIZACIÓN DE LA TABLA DE PAQUETES
+    // ============================================================
+
+    /**
+     * Rellena la tabla HTML con los datos de los paquetes.
+     * @param {Pedido[]} pedidos - Array de pedidos
+     */
+    function actualizarTablaPaquetes(pedidos) {
+        var tbody = document.getElementById('tablaPaquetesBody');
+        var countEl = document.getElementById('tablaPedidosCount');
+
+        // Mostrar solo los primeros 20 para no sobrecargar el DOM
+        var maxShow = Math.min(pedidos.length, 20);
+        var html = '';
+
+        for (var i = 0; i < maxShow; i++) {
+            var p = pedidos[i];
+            var estadoClass = p.estado.replace(' ', '_');
+            var geocercaText = p.grupo >= 0 ? 'Zona #' + (p.grupo + 1) : '<span style="color: #6b6b80;">—</span>';
+
+            html += '<tr>' +
+                '<td class="codigo">' + p.codigo + '</td>' +
+                '<td>' + p.producto + '</td>' +
+                '<td>' + p.peso + ' kg</td>' +
+                '<td><span class="estado-badge ' + estadoClass + '">● ' + traducirEstado(p.estado) + '</span></td>' +
+                '<td>' + geocercaText + '</td>' +
+                '</tr>';
+        }
+
+        if (pedidos.length > maxShow) {
+            html += '<tr><td colspan="5" style="text-align: center; color: #6b6b80; padding: 12px;">... y ' + (pedidos.length - maxShow) + ' paquetes más</td></tr>';
+        }
+
+        tbody.innerHTML = html;
+        countEl.textContent = pedidos.length;
+    }
+
+    // ============================================================
+    // UTILIDADES DE UI
+    // ============================================================
+
+    /**
+     * Muestra/oculta el spinner de carga en un botón.
+     * @param {string} btnId - ID del botón
+     * @param {boolean} loading - Si está cargando
+     */
+    function setBtnLoading(btnId, loading) {
+        var btn = document.getElementById(btnId);
+        if (!btn) return;
+        btn.disabled = loading;
+        if (loading) {
+            btn.dataset.original = btn.innerHTML;
+            btn.innerHTML = '<span class="algo-spinner"></span> Ejecutando...';
+        } else {
+            btn.innerHTML = btn.dataset.original || btn.innerHTML;
+        }
+    }
+
+    /**
+     * Resetea los valores del benchmark en la UI.
+     */
+    function resetBenchmark() {
+        document.getElementById('jsTime').innerHTML = '&mdash;';
+        document.getElementById('jsGroups').textContent = '—';
+        document.getElementById('pyTime').innerHTML = '&mdash;';
+        document.getElementById('pyGroups').textContent = '—';
+        document.getElementById('wasmTime').innerHTML = '&mdash;';
+        document.getElementById('wasmGroups').textContent = '—';
+        document.getElementById('contadorGeocercas').textContent = '0';
+    }
+    </script>
+
+</body>
+</html>

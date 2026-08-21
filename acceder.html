@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Clave del Peluquero Exitoso</title>
+    <meta name="description" content="Inicia sesión o regístrate en Clave del Peluquero Exitoso.">
+    <meta name="keywords" content="login, registro, peluquería, Caldas">
+    <!-- Boxicons para iconos -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- FontAwesome para iconos adicionales -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <!-- REDISEÑO 2026: Fuentes modernas Outfit + Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- REDISEÑO 2026: Estilos de login modernizados -->
+    <link rel="stylesheet" href="css/ingresar.css">
+</head>
+<body>
+ <div class="wrapper">
+    <nav class="nav">
+        <div class="nav-logo">
+            <a href="index.html" style="text-decoration: none; display: flex; align-items: center; height: 80px; padding-left: 20px;">
+                <span style="font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 700; background: linear-gradient(135deg, #d4a853, #e8c97a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                    <i class="fas fa-cut" style="-webkit-text-fill-color: #d4a853; margin-right: 8px;"></i>Clave del Peluquero
+                </span>
+            </a>
+        </div>
+        <div class="nav-menu" id="navMenu"></div>
+        <div class="nav-button">
+            <button class="btn white-btn" id="loginBtn" onclick="login()">Ingresa</button>
+            <button class="btn" id="registerBtn" onclick="register()">Regístrate</button>
+        </div>
+        <div class="nav-menu-btn">
+            <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+        </div>
+    </nav>
+
+<!----------------------------- Form box ----------------------------------->    
+    <div class="form-box">
+        
+        <!------------------- login form -------------------------->
+        
+            <div class="login-container" id="login">
+                <div class="top">
+                    <span>¿Aún no tienes una cuenta? <a href="#" onclick="register()">Regístrate</a></span>
+                    <header>Ingresa</header>
+                </div>    
+
+            <!-- REDISEÑO 2026: Formulario de login con validación JS -->
+            <form class="form-signin" id="frmAcceso" name="frmAcceso" onsubmit="handleLogin(event)">
+                <div class="input-box">
+                    <input type="text" class="input-field" placeholder="Documento" id="DocumentoUsua" name="DocumentoUsua" required>
+                    <i class="bx bx-user"></i>
+                </div>
+                <div class="input-box">
+                    <input type="password" class="input-field" placeholder="Contraseña" id="ClaveUsuario" name="ClaveUsuario" required>
+                    <i class="bx bx-lock-alt"></i>
+                </div>
+                <!-- Mensaje de error/éxito -->
+                <div id="loginMessage" style="display: none; padding: 10px; border-radius: 8px; margin-bottom: 10px; font-size: 13px; text-align: center;"></div>
+                <button class="submit" type="submit" title="Botón para iniciar sesión">Ingresar</button>
+                <br>
+            </form>
+            <a href="index.html"><button class="back"><i class="fas fa-arrow-left" style="margin-right: 8px;"></i>Volver al Inicio</button></a>
+
+            
+                <div class="two-col">
+                    <div class="one">
+                        <input type="checkbox" id="login-check">
+                        <label for="login-check"> Recuérdame</label>
+                    </div>
+                    <div class="two">
+                        <label><a href="#">¿Olvidaste la contraseña?</a></label>
+                    </div>
+                </div>
+            </div>
+        
+
+        <!------------------- registration form -------------------------->
+        <div class="register-container" id="register">
+            <div class="top">
+                <span>¿Ya tienes una cuenta? <a href="#" onclick="login()">Ingresa</a></span>
+                <header>Regístrate</header>
+            </div>
+                <!-- REDISEÑO 2026: Formulario de registro con validación JS -->
+                <form id="frmRegistro" onsubmit="handleRegister(event)">
+                    <div class="two-forms">
+                        <div class="input-box">
+                            <input type="text" class="input-field" placeholder="Nombre" name="NombreUsuario" required>
+                            <i class="bx bx-user"></i>
+                        </div>
+                        <div class="input-box">
+                            <input type="text" class="input-field" placeholder="Apellido" name="ApellidoUsuario" required>
+                            <i class="bx bx-user"></i>
+                        </div>
+                    </div>
+                    <div class="two-forms">
+                        <div class="input-box">
+                            <select class="input-field" name="TipoDocumento" required>
+                                <option value="" disabled selected>Tipo de documento</option>
+                                <option value="Cedula" style="color: black;">Cedula</option>
+                                <option value="Tarjeta de identidad" style="color: black;">Tarjeta de identidad</option>
+                                <option value="Pasaporte" style="color: black;">Pasaporte</option>
+                            </select>
+                            <i class='bx bx-id-card'></i>
+                        </div>
+                        <div class="input-box">
+                            <input type="text" class="input-field" placeholder="Documento" name="DocumentoUsua" required>
+                            <i class='bx bx-file'></i>
+                        </div>
+                    </div>
+                    <div class="two-forms">
+                        <div class="input-box">
+                            <input type="date" class="input-field" name="FechaNacUsua" required>
+                            <i class='bx bx-calendar'></i>
+                        </div>
+                        <div class="input-box">
+                            <select class="input-field" name="Genero" required>
+                                <option value="" disabled selected>Seleccione su género</option>
+                                <option value="Masculino" style="color: black;">Masculino</option>
+                                <option value="Femenino"  style="color: black;">Femenino</option>
+                                <option value="Prefiero no decirlo" style="color: black;">Prefiero no decirlo</option>
+                            </select>
+                            <i class='bx bx-user'></i>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <input type="tel" class="input-field" placeholder="Celular" name="CelUsua" required>
+                        <i class='bx bx-mobile'></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="email" class="input-field" placeholder="Email" name="CorreoUsua" required>
+                        <i class="bx bx-envelope"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" class="input-field" placeholder="Contraseña" name="ClaveUsuario" required minlength="6">
+                        <i class='bx bx-lock'></i>
+                    </div>
+                    <!-- Mensaje de error/éxito -->
+                    <div id="registerMessage" style="display: none; padding: 10px; border-radius: 8px; margin-bottom: 10px; font-size: 13px; text-align: center;"></div>
+                    <button class="submit" type="submit" title="Botón para registrarse">Registrar</button>
+                </form>
+            <a href="index.html"><button class="back"><i class="fas fa-arrow-left" style="margin-right: 8px;"></i>Volver al Inicio</button></a>
+            <div class="two-col">
+                <div class="one">
+                    <input type="checkbox" id="register-check">
+                    <label for="register-check"> Recuérdame</label>
+                </div>
+                <div class="two">
+                    <label><a href="#">Términos & Condiciones</a></label>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>   
+
+<!-- REDISEÑO 2026: JavaScript de navegación y validación -->
+<script>
+   // ================================================
+   // NAVEGACIÓN ENTRE LOGIN Y REGISTRO
+   // ================================================
+   function myMenuFunction() {
+        var i = document.getElementById("navMenu");
+        if(i.className === "nav-menu") {
+        i.className += " responsive";
+        } else {
+        i.className = "nav-menu";
+        }
+    }
+
+    var a = document.getElementById("loginBtn");
+    var b = document.getElementById("registerBtn");
+    var x = document.getElementById("login");
+    var y = document.getElementById("register");
+
+    function login() {
+        x.style.left = "4px";
+        y.style.right = "-520px";
+        a.className += " white-btn";
+        b.className = "btn";
+        x.style.opacity = 1;
+        y.style.opacity = 0;
+    }
+
+    function register() {
+        x.style.left = "-510px";
+        y.style.right = "5px";
+        a.className = "btn";
+        b.className += " white-btn";
+        x.style.opacity = 0;
+        y.style.opacity = 1;
+    }
+
+    // ================================================
+    // VALIDACIÓN Y MANEJO DE LOGIN
+    // ================================================
+    function handleLogin(event) {
+        event.preventDefault();
+        var doc = document.getElementById('DocumentoUsua').value.trim();
+        var pass = document.getElementById('ClaveUsuario').value.trim();
+        var msgEl = document.getElementById('loginMessage');
+        
+        if (!doc || !pass) {
+            showMessage(msgEl, 'Por favor completa todos los campos.', 'error');
+            return;
+        }
+
+        // Guardar sesión en localStorage (simulación client-side)
+        var users = JSON.parse(localStorage.getItem('clave_users') || '[]');
+        var user = users.find(function(u) { return u.documento === doc && u.clave === pass; });
+        
+        if (user) {
+            localStorage.setItem('clave_session', JSON.stringify(user));
+            showMessage(msgEl, '¡Bienvenido, ' + user.nombre + '! Redirigiendo...', 'success');
+            setTimeout(function() { window.location.href = 'index.html'; }, 1500);
+        } else if (users.length === 0) {
+            showMessage(msgEl, 'No hay usuarios registrados. ¡Regístrate primero!', 'error');
+        } else {
+            showMessage(msgEl, 'Documento o contraseña incorrectos.', 'error');
+        }
+    }
+
+    // ================================================
+    // VALIDACIÓN Y MANEJO DE REGISTRO
+    // ================================================
+    function handleRegister(event) {
+        event.preventDefault();
+        var form = event.target;
+        var data = new FormData(form);
+        var msgEl = document.getElementById('registerMessage');
+        
+        // Validar campos vacíos
+        var nombre = data.get('NombreUsuario');
+        var apellido = data.get('ApellidoUsuario');
+        var documento = data.get('DocumentoUsua');
+        var clave = data.get('ClaveUsuario');
+        var email = data.get('CorreoUsua');
+
+        if (!nombre || !apellido || !documento || !clave || !email) {
+            showMessage(msgEl, 'Por favor completa todos los campos obligatorios.', 'error');
+            return;
+        }
+
+        // Guardar en localStorage
+        var users = JSON.parse(localStorage.getItem('clave_users') || '[]');
+        
+        // Verificar si ya existe
+        var exists = users.find(function(u) { return u.documento === documento; });
+        if (exists) {
+            showMessage(msgEl, 'Ya existe un usuario con ese documento.', 'error');
+            return;
+        }
+
+        var newUser = {
+            nombre: nombre,
+            apellido: apellido,
+            tipoDoc: data.get('TipoDocumento'),
+            documento: documento,
+            fechaNac: data.get('FechaNacUsua'),
+            genero: data.get('Genero'),
+            celular: data.get('CelUsua'),
+            email: email,
+            clave: clave
+        };
+        users.push(newUser);
+        localStorage.setItem('clave_users', JSON.stringify(users));
+        
+        showMessage(msgEl, '¡Registro exitoso! Ahora puedes iniciar sesión.', 'success');
+        form.reset();
+        setTimeout(function() { login(); }, 2000);
+    }
+
+    // ================================================
+    // UTILIDAD: Mostrar mensajes
+    // ================================================
+    function showMessage(element, text, type) {
+        element.style.display = 'block';
+        element.textContent = text;
+        if (type === 'error') {
+            element.style.background = 'rgba(220, 53, 69, 0.15)';
+            element.style.color = '#ff6b7a';
+            element.style.border = '1px solid rgba(220, 53, 69, 0.3)';
+        } else {
+            element.style.background = 'rgba(40, 167, 69, 0.15)';
+            element.style.color = '#7aff9a';
+            element.style.border = '1px solid rgba(40, 167, 69, 0.3)';
+        }
+        setTimeout(function() { element.style.display = 'none'; }, 4000);
+    }
+
+    // ================================================
+    // VERIFICAR SI HAY PARÁMETRO ?registro EN URL PARA IR DIRECTO AL REGISTRO
+    // ================================================
+    if (window.location.search.indexOf('registro') !== -1) {
+        register();
+    }
+</script>
+</body>
+</html>
